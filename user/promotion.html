@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优惠活动 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white px-4 py-3 shadow-sm flex items-center justify-between sticky top-0 z-10">
+        <h1 class="text-lg font-bold text-gray-800">优惠活动</h1>
+        <div class="text-gray-600">
+            <i class="fas fa-bell text-xl"></i>
+        </div>
+    </div>
+    
+    <!-- 活动轮播图 -->
+    <div class="relative bg-white">
+        <div class="overflow-hidden">
+            <div class="flex transition-transform duration-500 ease-out">
+                <div class="w-full flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1562620669-98104534c6cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="活动1" class="w-full h-48 object-cover">
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-2 left-0 right-0 flex justify-center">
+            <div class="w-2 h-2 rounded-full bg-white mx-1 opacity-100"></div>
+            <div class="w-2 h-2 rounded-full bg-white mx-1 opacity-50"></div>
+            <div class="w-2 h-2 rounded-full bg-white mx-1 opacity-50"></div>
+        </div>
+    </div>
+    
+    <!-- 活动分类 -->
+    <div class="bg-white mt-2 py-4">
+        <div class="grid grid-cols-4 gap-2 px-4">
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-percentage text-red-500"></i>
+                </div>
+                <span class="text-xs text-gray-700">限时折扣</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-ticket-alt text-orange-500"></i>
+                </div>
+                <span class="text-xs text-gray-700">优惠券</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-gift text-green-500"></i>
+                </div>
+                <span class="text-xs text-gray-700">新人礼包</span>
+            </a>
+            <a href="#" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-star text-orange-500"></i>
+                </div>
+                <span class="text-xs text-gray-700">会员特权</span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- 限时活动 -->
+    <div class="mt-2 px-4">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-base font-bold text-gray-800">限时活动</h2>
+            <a href="#" class="text-xs text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <!-- 活动卡片 -->
+            <div class="p-4 border-b">
+                <div class="flex mb-3">
+                    <div class="w-24 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1461938337379-4b537cd2db74?ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80" alt="限时特惠" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <h3 class="text-sm font-medium text-gray-800">夏日特惠 · 房车周末游</h3>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">周末房车租赁7折起，另有精美礼品相送，活动时间有限，先到先得！</p>
+                        <div class="mt-2 flex items-center">
+                            <span class="text-xs bg-red-100 text-red-500 px-2 py-0.5 rounded">仅剩3天</span>
+                            <span class="ml-2 text-xs text-gray-400">1280人已参与</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="w-full py-2 bg-orange-500 text-white rounded text-sm">立即参与</button>
+            </div>
+            
+            <div class="p-4">
+                <div class="flex mb-3">
+                    <div class="w-24 h-20 rounded-lg overflow-hidden flex-shrink-0">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80" alt="会员专享" class="w-full h-full object-cover">
+                    </div>
+                    <div class="ml-3 flex-1">
+                        <h3 class="text-sm font-medium text-gray-800">会员专享 · 长租优惠</h3>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-2">会员长租满7天额外赠送1天，满15天额外赠送3天，心动不如行动！</p>
+                        <div class="mt-2 flex items-center">
+                            <span class="text-xs bg-orange-100 text-orange-500 px-2 py-0.5 rounded">会员专享</span>
+                            <span class="ml-2 text-xs text-gray-400">856人已参与</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="w-full py-2 bg-orange-500 text-white rounded text-sm">立即参与</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 优惠券专区 -->
+    <div class="mt-4 px-4">
+        <div class="flex justify-between items-center mb-2">
+            <h2 class="text-base font-bold text-gray-800">优惠券专区</h2>
+            <a href="#" class="text-xs text-gray-500">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+            <!-- 优惠券1 -->
+            <div class="flex p-4 border-b">
+                <div class="flex-1 flex border-r border-dashed pr-4">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-dollar-sign text-red-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <div class="flex items-baseline">
+                            <span class="text-xl font-bold text-red-500">¥100</span>
+                            <span class="text-xs text-gray-500 ml-1">满1000可用</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">有效期至: 2023-12-31</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center pl-4 w-20">
+                    <button class="py-1 px-3 bg-red-500 text-white rounded text-xs">领取</button>
+                </div>
+            </div>
+            
+            <!-- 优惠券2 -->
+            <div class="flex p-4">
+                <div class="flex-1 flex border-r border-dashed pr-4">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-percentage text-orange-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <div class="flex items-baseline">
+                            <span class="text-xl font-bold text-orange-500">8折</span>
+                            <span class="text-xs text-gray-500 ml-1">无使用门槛</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mt-1">有效期至: 2023-12-31</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center pl-4 w-20">
+                    <button class="py-1 px-3 bg-orange-500 text-white rounded text-xs">领取</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center text-xs text-gray-600">
+        <a href="home.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-home text-gray-400 text-lg mb-1"></i>
+            <span>首页</span>
+        </a>
+        <a href="search.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-car text-gray-400 text-lg mb-1"></i>
+            <span>租车</span>
+        </a>
+        <a href="marketing.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-gift text-orange-500 text-lg mb-1"></i>
+            <span class="text-orange-500">活动</span>
+        </a>
+        <a href="user-center.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-user text-gray-400 text-lg mb-1"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 

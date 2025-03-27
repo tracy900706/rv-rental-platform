@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优惠活动 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="text-lg font-medium">活动</div>
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-bell text-gray-600"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 活动轮播图 -->
+    <div class="relative">
+        <div class="w-full h-48 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="活动" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-4 left-4 text-white">
+                <h2 class="text-xl font-bold">五一节超值优惠</h2>
+                <p class="text-sm mt-1 opacity-90">房车租赁低至7折，全场满2000减200</p>
+            </div>
+        </div>
+        <!-- 轮播指示器 -->
+        <div class="absolute bottom-2 right-4 flex space-x-1">
+            <div class="w-2 h-2 rounded-full bg-white opacity-100"></div>
+            <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+            <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+        </div>
+    </div>
+
+    <!-- 活动分类 -->
+    <div class="bg-white mt-2 px-4 pt-4 pb-2">
+        <div class="grid grid-cols-4 gap-4">
+            <a href="#discount" class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-percent text-red-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-600">限时折扣</span>
+            </a>
+            <a href="#groupbuy" class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-users text-orange-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-600">拼团优惠</span>
+            </a>
+            <a href="#distribution" class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-share-alt text-green-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-600">分销返利</span>
+            </a>
+            <a href="#membership" class="flex flex-col items-center">
+                <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-crown text-purple-500 text-xl"></i>
+                </div>
+                <span class="text-xs text-gray-600">会员特权</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 优惠券领取区 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold">限时优惠券</h3>
+            <div class="text-sm text-gray-500 flex items-center">
+                更多 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </div>
+        </div>
+        <div class="overflow-x-auto pb-2 hide-scrollbar">
+            <div class="flex space-x-3">
+                <!-- 优惠券1 -->
+                <div class="bg-gradient-to-r from-red-500 to-red-600 rounded-lg overflow-hidden min-w-[220px]">
+                    <div class="p-3 text-white">
+                        <div class="flex items-center">
+                            <div class="text-2xl font-bold">¥200</div>
+                            <div class="ml-2 text-xs opacity-90">
+                                <div>满2000可用</div>
+                                <div>有效期：30天</div>
+                            </div>
+                        </div>
+                        <div class="text-xs mt-2 opacity-80">仅限C型房车使用</div>
+                        <button class="mt-2 bg-white text-red-500 text-xs px-3 py-1 rounded-full font-medium">
+                            立即领取
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 优惠券2 -->
+                <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg overflow-hidden min-w-[220px]">
+                    <div class="p-3 text-white">
+                        <div class="flex items-center">
+                            <div class="text-2xl font-bold">¥100</div>
+                            <div class="ml-2 text-xs opacity-90">
+                                <div>满1000可用</div>
+                                <div>有效期：30天</div>
+                            </div>
+                        </div>
+                        <div class="text-xs mt-2 opacity-80">全平台通用</div>
+                        <button class="mt-2 bg-white text-orange-500 text-xs px-3 py-1 rounded-full font-medium">
+                            立即领取
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 优惠券3 -->
+                <div class="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg overflow-hidden min-w-[220px]">
+                    <div class="p-3 text-white">
+                        <div class="flex items-center">
+                            <div class="text-2xl font-bold">¥50</div>
+                            <div class="ml-2 text-xs opacity-90">
+                                <div>满500可用</div>
+                                <div>有效期：15天</div>
+                            </div>
+                        </div>
+                        <div class="text-xs mt-2 opacity-80">新用户专享</div>
+                        <button class="mt-2 bg-white text-purple-500 text-xs px-3 py-1 rounded-full font-medium">
+                            立即领取
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 限时折扣区 -->
+    <div id="discount" class="bg-white mt-2 p-4">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold">限时折扣</h3>
+            <div class="text-sm text-gray-500 flex items-center">
+                更多 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </div>
+        </div>
+        
+        <!-- 倒计时 -->
+        <div class="flex items-center mb-4">
+            <div class="text-sm text-gray-700">距离结束还剩：</div>
+            <div class="ml-2 flex space-x-1">
+                <div class="bg-gray-800 text-white text-xs px-1.5 py-0.5 rounded-sm">23</div>
+                <span class="text-xs text-gray-700">:</span>
+                <div class="bg-gray-800 text-white text-xs px-1.5 py-0.5 rounded-sm">45</div>
+                <span class="text-xs text-gray-700">:</span>
+                <div class="bg-gray-800 text-white text-xs px-1.5 py-0.5 rounded-sm">19</div>
+            </div>
+        </div>
+        
+        <!-- 折扣商品 -->
+        <div class="grid grid-cols-2 gap-3">
+            <!-- 商品1 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-100" onclick="location.href='vehicle-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="w-full h-28 object-cover">
+                    <div class="absolute top-0 left-0 bg-red-500 text-white text-xs px-2 py-0.5">7.5折</div>
+                </div>
+                <div class="p-2">
+                    <h4 class="font-medium text-sm">豪华C型房车</h4>
+                    <div class="flex justify-between items-center mt-1">
+                        <div>
+                            <span class="text-red-500 font-bold">¥750</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">¥999</span>
+                        </div>
+                        <div class="text-xs text-gray-500">已售44</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 商品2 -->
+            <div class="bg-gray-50 rounded-lg overflow-hidden border border-gray-100" onclick="location.href='vehicle-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="w-full h-28 object-cover">
+                    <div class="absolute top-0 left-0 bg-red-500 text-white text-xs px-2 py-0.5">8折</div>
+                </div>
+                <div class="p-2">
+                    <h4 class="font-medium text-sm">经典B型房车</h4>
+                    <div class="flex justify-between items-center mt-1">
+                        <div>
+                            <span class="text-red-500 font-bold">¥640</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">¥799</span>
+                        </div>
+                        <div class="text-xs text-gray-500">已售12</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 拼团区 -->
+    <div id="groupbuy" class="bg-white mt-2 p-4">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold">拼团优惠</h3>
+            <div class="text-sm text-gray-500 flex items-center">
+                更多 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </div>
+        </div>
+        
+        <!-- 拼团卡片 -->
+        <div class="space-y-3">
+            <!-- 拼团1 -->
+            <div class="flex rounded-lg border overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="房车拼团" class="w-24 h-24 object-cover">
+                <div class="flex-1 p-2">
+                    <h4 class="font-medium text-sm">2人拼团·豪华A型房车</h4>
+                    <div class="flex items-center mt-1 text-xs text-gray-500">
+                        <i class="fas fa-user-friends mr-1"></i>
+                        <span>已有3组拼团成功</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold">¥599</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">¥899</span>
+                        </div>
+                        <button class="px-3 py-1 bg-red-500 text-white text-xs rounded-full">去拼团</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 拼团2 -->
+            <div class="flex rounded-lg border overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="房车拼团" class="w-24 h-24 object-cover">
+                <div class="flex-1 p-2">
+                    <h4 class="font-medium text-sm">3人拼团·北戴河3日自驾</h4>
+                    <div class="flex items-center mt-1 text-xs text-gray-500">
+                        <i class="fas fa-user-friends mr-1"></i>
+                        <span>已有2组拼团成功</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold">¥799</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">¥1299</span>
+                        </div>
+                        <button class="px-3 py-1 bg-red-500 text-white text-xs rounded-full">去拼团</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 拼团3 -->
+            <div class="flex rounded-lg border overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="房车拼团" class="w-24 h-24 object-cover">
+                <div class="flex-1 p-2">
+                    <h4 class="font-medium text-sm">5人拼团·草原深度游</h4>
+                    <div class="flex items-center mt-1 text-xs text-gray-500">
+                        <i class="fas fa-user-friends mr-1"></i>
+                        <span>已有1组拼团成功</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold">¥1699</span>
+                            <span class="text-xs text-gray-500 line-through ml-1">¥2399</span>
+                        </div>
+                        <button class="px-3 py-1 bg-red-500 text-white text-xs rounded-full">去拼团</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分销返利 -->
+    <div id="distribution" class="bg-white mt-2 p-4">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold">分销返利</h3>
+            <div class="text-sm text-gray-500 flex items-center">
+                查看规则 <i class="fas fa-question-circle ml-1 text-xs"></i>
+            </div>
+        </div>
+        
+        <!-- 分销banner -->
+        <div class="relative rounded-lg overflow-hidden h-36 mb-4">
+            <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="分销" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-orange-800/80 to-orange-600/50"></div>
+            <div class="absolute top-4 left-4 text-white">
+                <h3 class="font-bold text-lg">分享赚钱</h3>
+                <p class="text-sm mt-1 opacity-90">推荐好友租车，享受高额返利</p>
+                <button class="mt-3 bg-white text-orange-600 px-4 py-1.5 rounded-full text-sm font-medium">
+                    立即分享
+                </button>
+            </div>
+        </div>
+        
+        <!-- 分销数据 -->
+        <div class="grid grid-cols-3 gap-4 mb-4">
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+                <div class="text-gray-500 text-xs">累计邀请</div>
+                <div class="text-lg font-bold text-orange-500 mt-1">3人</div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+                <div class="text-gray-500 text-xs">累计收益</div>
+                <div class="text-lg font-bold text-orange-500 mt-1">¥235.80</div>
+            </div>
+            <div class="bg-gray-50 p-3 rounded-lg text-center">
+                <div class="text-gray-500 text-xs">可提现</div>
+                <div class="text-lg font-bold text-orange-500 mt-1">¥135.00</div>
+            </div>
+        </div>
+        
+        <!-- 分销政策 -->
+        <div class="bg-orange-50 p-3 rounded-lg text-sm text-orange-800">
+            <div class="font-medium mb-1">分销政策</div>
+            <div class="text-xs space-y-1">
+                <p>1. 一级好友下单，返订单金额的5%</p>
+                <p>2. 二级好友下单，返订单金额的2%</p>
+                <p>3. 累计返利满100元可提现</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 会员特权 -->
+    <div id="membership" class="bg-white mt-2 p-4 mb-16">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold">会员特权</h3>
+            <button class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white text-xs rounded-full">
+                立即开通
+            </button>
+        </div>
+        
+        <!-- 会员卡 -->
+        <div class="relative bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-xl p-4 h-40 mb-4">
+            <div class="absolute top-3 right-3 bg-white/20 px-2 py-0.5 rounded-full text-xs text-white">
+                免费试用7天
+            </div>
+            <h4 class="text-white font-bold text-lg">尊享会员</h4>
+            <div class="text-white/90 text-xs mt-1">尊享多项会员专属特权</div>
+            <div class="absolute bottom-4 left-4 right-4">
+                <div class="flex justify-between items-center">
+                    <div class="text-white opacity-90">
+                        <div class="text-xs">年费会员</div>
+                        <div class="text-xl font-bold">¥198</div>
+                    </div>
+                    <button class="px-4 py-1.5 bg-white text-yellow-600 rounded-full text-sm font-medium">
+                        立即开通
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 会员权益 -->
+        <div class="grid grid-cols-2 gap-3">
+            <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-2">
+                    <i class="fas fa-percent text-yellow-500"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">租车优惠</div>
+                    <div class="text-xs text-gray-500 mt-0.5">全场8.5折</div>
+                </div>
+            </div>
+            <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-2">
+                    <i class="fas fa-gift text-yellow-500"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">生日礼包</div>
+                    <div class="text-xs text-gray-500 mt-0.5">专属优惠券</div>
+                </div>
+            </div>
+            <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-2">
+                    <i class="fas fa-medal text-yellow-500"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">积分加速</div>
+                    <div class="text-xs text-gray-500 mt-0.5">积分1.5倍速</div>
+                </div>
+            </div>
+            <div class="flex items-center bg-gray-50 p-3 rounded-lg">
+                <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-2">
+                    <i class="fas fa-tags text-yellow-500"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-medium">专属活动</div>
+                    <div class="text-xs text-gray-500 mt-0.5">会员专享价</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center text-xs text-gray-600">
+        <a href="home.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-home text-gray-400 text-lg mb-1"></i>
+            <span>首页</span>
+        </a>
+        <a href="search.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-car text-gray-400 text-lg mb-1"></i>
+            <span>租车</span>
+        </a>
+        <a href="marketing.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-gift text-orange-500 text-lg mb-1"></i>
+            <span class="text-orange-500">活动</span>
+        </a>
+        <a href="user-center.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-user text-gray-400 text-lg mb-1"></i>
+            <span>我的</span>
+        </a>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <script>
+        // 向父窗口发送消息，更新底部导航栏状态
+        if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+                action: 'updateBottomNav',
+                activeItem: 'activity'
+            }, '*');
+        }
+    </script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body>
+</html> 

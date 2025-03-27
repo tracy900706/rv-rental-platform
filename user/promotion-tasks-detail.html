@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广任务详情 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <div class="mr-3" onclick="history.back()">
+            <i class="fas fa-arrow-left text-gray-700"></i>
+        </div>
+        <h1 class="text-lg font-bold flex-1 text-center">新电商推广详情</h1>
+    </div>
+
+    <!-- 任务头部 -->
+    <div class="px-4 pt-4">
+        <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white">
+            <div class="flex items-center mb-3">
+                <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
+                    <i class="fas fa-shopping-bag text-orange-500"></i>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold">新电商推广</h2>
+                    <div class="text-sm opacity-80 mt-1">升级为老板，享受多重收益</div>
+                </div>
+            </div>
+            <div class="bg-white/20 p-3 rounded-lg">
+                <div class="text-sm">当前等级：<span class="font-bold">推广员</span></div>
+                <div class="mt-2 h-2 bg-white/30 rounded-full">
+                    <div class="h-full bg-white rounded-full" style="width: 35%"></div>
+                </div>
+                <div class="flex justify-between mt-1 text-xs opacity-80">
+                    <span>已推广 1 人</span>
+                    <span>成为老板还需 1 人</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 任务规则 -->
+    <div class="px-4 pt-4">
+        <div class="bg-white rounded-xl p-4">
+            <h3 class="text-base font-bold mb-3 flex items-center">
+                <i class="fas fa-list-ul text-orange-500 mr-2"></i>
+                推广规则
+            </h3>
+            
+            <div class="space-y-4 text-sm text-gray-700">
+                <!-- 直推奖励 -->
+                <div class="bg-gray-50 p-3 rounded-lg">
+                    <div class="font-medium text-orange-500 mb-2 flex items-center">
+                        <div class="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mr-2">
+                            <span class="text-xs text-orange-500">1</span>
+                        </div>
+                        直推奖励
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>购买升级礼包后获得推广权限</li>
+                        <li>推广一人到平台购买商品获得<span class="text-red-500 font-medium">10%</span>奖励</li>
+                        <li>推广第二人购买商品获得<span class="text-red-500 font-medium">15%</span>奖励</li>
+                        <li>推广两人后您将升级为<span class="text-red-500 font-medium">老板</span>身份</li>
+                    </ul>
+                </div>
+                
+                <!-- 见点奖励 -->
+                <div class="bg-gray-50 p-3 rounded-lg">
+                    <div class="font-medium text-orange-500 mb-2 flex items-center">
+                        <div class="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mr-2">
+                            <span class="text-xs text-orange-500">2</span>
+                        </div>
+                        见点奖励
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>成为老板后，您直推的用户获得推广权限</li>
+                        <li>当他们推广新用户时，您将额外获得<span class="text-red-500 font-medium">5%</span>的见点奖励</li>
+                        <li>见点奖励不限代数，团队越大收益越多</li>
+                    </ul>
+                </div>
+                
+                <!-- 平级奖励 -->
+                <div class="bg-gray-50 p-3 rounded-lg">
+                    <div class="font-medium text-orange-500 mb-2 flex items-center">
+                        <div class="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mr-2">
+                            <span class="text-xs text-orange-500">3</span>
+                        </div>
+                        平级奖励
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>当您直推的用户也升级为老板身份</li>
+                        <li>您将额外获得该用户个人收益的<span class="text-red-500 font-medium">10%</span>作为平级奖励</li>
+                        <li>直推越多老板，平级奖励越丰厚</li>
+                    </ul>
+                </div>
+                
+                <!-- 帮扶奖励 -->
+                <div class="bg-gray-50 p-3 rounded-lg">
+                    <div class="font-medium text-orange-500 mb-2 flex items-center">
+                        <div class="w-5 h-5 rounded-full bg-orange-100 flex items-center justify-center mr-2">
+                            <span class="text-xs text-orange-500">4</span>
+                        </div>
+                        帮扶机制
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li>为防止用户留下"僵尸粉"，平台设置帮扶机制</li>
+                        <li>若上级用户未升级为老板，平台将冻结您<span class="text-red-500 font-medium">20%</span>的收益</li>
+                        <li>需帮助您之前邀请的两名用户也升级为老板才可解锁收益</li>
+                        <li>鼓励团队共同成长，互帮互助</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 收益示例 -->
+    <div class="px-4 pt-4">
+        <div class="bg-white rounded-xl p-4">
+            <h3 class="text-base font-bold mb-3 flex items-center">
+                <i class="fas fa-chart-line text-orange-500 mr-2"></i>
+                收益示例
+            </h3>
+            
+            <div class="bg-gray-50 p-3 rounded-lg text-sm">
+                <div class="font-medium mb-2">情景模拟：</div>
+                <p class="text-gray-600 mb-3">假设您是老板身份，推广结构如下：</p>
+                
+                <div class="border-l-2 border-orange-300 pl-3 mb-3">
+                    <div class="font-medium">您（老板）</div>
+                    <div class="ml-4 mt-2 border-l-2 border-green-300 pl-3">
+                        <div class="font-medium">用户A（已升级为老板）</div>
+                        <div class="ml-4 mt-1 border-l-2 border-gray-300 pl-3">
+                            <div>用户C（普通用户，消费1000元）</div>
+                        </div>
+                    </div>
+                    <div class="ml-4 mt-2 border-l-2 border-green-300 pl-3">
+                        <div class="font-medium">用户B（普通用户）</div>
+                        <div class="ml-4 mt-1 border-l-2 border-gray-300 pl-3">
+                            <div>用户D（普通用户，消费1000元）</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-2 text-gray-600">
+                    <div>您的收益：</div>
+                    <div class="ml-4">
+                        <div>· 用户C消费：获得见点奖励 1000×5% = <span class="text-red-500 font-medium">50元</span></div>
+                        <div>· 用户A收益：获得平级奖励 100×10% = <span class="text-red-500 font-medium">10元</span></div>
+                        <div>· 用户D消费：获得见点奖励 1000×5% = <span class="text-red-500 font-medium">50元</span></div>
+                    </div>
+                    <div class="font-medium">总收益：<span class="text-red-500 font-medium">110元</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 常见问题 -->
+    <div class="px-4 pt-4 pb-20">
+        <div class="bg-white rounded-xl p-4">
+            <h3 class="text-base font-bold mb-3 flex items-center">
+                <i class="fas fa-question-circle text-orange-500 mr-2"></i>
+                常见问题
+            </h3>
+            
+            <div class="space-y-3 text-sm">
+                <div class="border-b border-gray-100 pb-3">
+                    <div class="font-medium mb-1">Q: 如何获得推广资格？</div>
+                    <div class="text-gray-600">A: 购买平台的推广礼包即可获得推广资格，礼包价格为99元。</div>
+                </div>
+                
+                <div class="border-b border-gray-100 pb-3">
+                    <div class="font-medium mb-1">Q: 收益如何提现？</div>
+                    <div class="text-gray-600">A: 收益将实时到账您的平台钱包，满100元即可提现至银行卡或微信/支付宝。</div>
+                </div>
+                
+                <div class="border-b border-gray-100 pb-3">
+                    <div class="font-medium mb-1">Q: 推广链接有效期是多久？</div>
+                    <div class="text-gray-600">A: 推广链接长期有效，只要用户通过您的链接注册并完成消费，您都能获得相应奖励。</div>
+                </div>
+                
+                <div>
+                    <div class="font-medium mb-1">Q: 如何查看我的团队数据？</div>
+                    <div class="text-gray-600">A: 在推广中心可以查看您的直推用户、团队规模、收益明细等数据。</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部固定按钮 -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t">
+        <button class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-3 rounded-lg font-medium">
+            立即购买推广礼包 (¥99)
+        </button>
+    </div>
+</body>
+</html> 

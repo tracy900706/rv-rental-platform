@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加车辆 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-20">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-base font-medium ml-3">添加车辆</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 表单部分 -->
+    <div class="p-4">
+        <form>
+            <!-- 门店信息卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">门店信息</h2>
+                
+                <!-- 所属门店 -->
+                <div class="mb-4">
+                    <label for="store_name" class="block text-sm font-medium text-gray-700 mb-1">所属门店</label>
+                    <select id="store_name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="1" selected>北京朝阳区门店</option>
+                        <option value="2">北京海淀区门店</option>
+                        <option value="3">北京丰台区门店</option>
+                        <option value="4">天津市门店</option>
+                    </select>
+                </div>
+                
+                <!-- 门店地址 -->
+                <div class="mb-4">
+                    <label for="store_address" class="block text-sm font-medium text-gray-700 mb-1">门店地址</label>
+                    <div class="flex">
+                        <input type="text" id="store_address" value="北京市朝阳区建国路88号" readonly class="w-full p-3 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none">
+                        <button type="button" class="ml-2 px-3 py-2 bg-green-50 text-green-500 rounded-lg">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 所属区域和上牌城市 -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label for="region" class="block text-sm font-medium text-gray-700 mb-1">所属区域</label>
+                        <select id="region" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="north" selected>华北区域</option>
+                            <option value="east">华东区域</option>
+                            <option value="south">华南区域</option>
+                            <option value="west">西部区域</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="license_city" class="block text-sm font-medium text-gray-700 mb-1">上牌城市</label>
+                        <select id="license_city" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="beijing" selected>北京市</option>
+                            <option value="tianjin">天津市</option>
+                            <option value="shanghai">上海市</option>
+                            <option value="chongqing">重庆市</option>
+                            <option value="other">其他城市</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 负责人信息 -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="manager" class="block text-sm font-medium text-gray-700 mb-1">车辆管理员</label>
+                        <input type="text" id="manager" placeholder="输入管理员姓名" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="manager_phone" class="block text-sm font-medium text-gray-700 mb-1">联系电话</label>
+                        <input type="tel" id="manager_phone" placeholder="输入联系电话" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 基本信息卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">基本信息</h2>
+                
+                <!-- 车型选择 -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">车辆类型</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center cursor-pointer">
+                            <input type="radio" name="vehicle_type" value="A" class="mr-2">
+                            <span>A型房车</span>
+                        </label>
+                        <label class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center cursor-pointer">
+                            <input type="radio" name="vehicle_type" value="B" class="mr-2">
+                            <span>B型房车</span>
+                        </label>
+                        <label class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center cursor-pointer">
+                            <input type="radio" name="vehicle_type" value="C" class="mr-2">
+                            <span>C型房车</span>
+                        </label>
+                        <label class="bg-gray-50 border border-gray-200 rounded-lg p-3 flex items-center cursor-pointer">
+                            <input type="radio" name="vehicle_type" value="trailer" class="mr-2">
+                            <span>拖挂式房车</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- 车辆名称 -->
+                <div class="mb-4">
+                    <label for="vehicle_name" class="block text-sm font-medium text-gray-700 mb-1">车辆名称</label>
+                    <input type="text" id="vehicle_name" placeholder="例如：豪华C型自动挡房车" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                
+                <!-- 车牌号码 -->
+                <div class="mb-4">
+                    <label for="license_plate" class="block text-sm font-medium text-gray-700 mb-1">车牌号码</label>
+                    <input type="text" id="license_plate" placeholder="例如：京A12345" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                
+                <!-- 品牌型号 -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label for="brand" class="block text-sm font-medium text-gray-700 mb-1">品牌</label>
+                        <input type="text" id="brand" placeholder="例如：福特" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="model" class="block text-sm font-medium text-gray-700 mb-1">型号</label>
+                        <input type="text" id="model" placeholder="例如：Transit" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+                
+                <!-- 购入年份 -->
+                <div class="mb-4">
+                    <label for="purchase_year" class="block text-sm font-medium text-gray-700 mb-1">购入年份</label>
+                    <select id="purchase_year" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="">请选择</option>
+                        <option value="2023">2023年</option>
+                        <option value="2022">2022年</option>
+                        <option value="2021">2021年</option>
+                        <option value="2020">2020年</option>
+                        <option value="2019">2019年</option>
+                    </select>
+                </div>
+                
+                <!-- 行驶里程 -->
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label for="mileage" class="block text-sm font-medium text-gray-700 mb-1">行驶里程(km)</label>
+                        <input type="number" id="mileage" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="last_maintenance" class="block text-sm font-medium text-gray-700 mb-1">最后保养日期</label>
+                        <input type="date" id="last_maintenance" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 车辆配置卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">车辆配置</h2>
+                
+                <!-- 座位数和床位数 -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label for="seats" class="block text-sm font-medium text-gray-700 mb-1">座位数(个)</label>
+                        <select id="seats" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">请选择</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                            <option value="8">8</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="beds" class="block text-sm font-medium text-gray-700 mb-1">床位数(个)</label>
+                        <select id="beds" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">请选择</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 排量和变速箱 -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label for="engine" class="block text-sm font-medium text-gray-700 mb-1">排量</label>
+                        <select id="engine" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">请选择</option>
+                            <option value="1.5">1.5T</option>
+                            <option value="2.0">2.0T</option>
+                            <option value="2.5">2.5T</option>
+                            <option value="3.0">3.0T</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="transmission" class="block text-sm font-medium text-gray-700 mb-1">变速箱</label>
+                        <select id="transmission" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <option value="">请选择</option>
+                            <option value="auto">自动</option>
+                            <option value="manual">手动</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- 油箱容量和油耗 -->
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                    <div>
+                        <label for="fuel_capacity" class="block text-sm font-medium text-gray-700 mb-1">油箱容量(L)</label>
+                        <input type="number" id="fuel_capacity" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="fuel_consumption" class="block text-sm font-medium text-gray-700 mb-1">百公里油耗(L)</label>
+                        <input type="number" id="fuel_consumption" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+                
+                <!-- 长宽高 -->
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                    <div>
+                        <label for="length" class="block text-sm font-medium text-gray-700 mb-1">长度(m)</label>
+                        <input type="number" step="0.01" id="length" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="width" class="block text-sm font-medium text-gray-700 mb-1">宽度(m)</label>
+                        <input type="number" step="0.01" id="width" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                    <div>
+                        <label for="height" class="block text-sm font-medium text-gray-700 mb-1">高度(m)</label>
+                        <input type="number" step="0.01" id="height" placeholder="输入数字" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                    </div>
+                </div>
+                
+                <!-- 特殊配置 -->
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">特殊配置</label>
+                    <div class="grid grid-cols-2 gap-y-2">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>冰箱</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>淋浴设施</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>厨房设备</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>空调</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>电视</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>太阳能板</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>外部遮阳篷</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="mr-2">
+                            <span>自行车架</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 租赁价格卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">租赁价格</h2>
+                
+                <!-- 日租金 -->
+                <div class="mb-4">
+                    <label for="daily_rate" class="block text-sm font-medium text-gray-700 mb-1">日租金(元)</label>
+                    <input type="number" id="daily_rate" placeholder="例如：680" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                
+                <!-- 押金 -->
+                <div class="mb-4">
+                    <label for="deposit" class="block text-sm font-medium text-gray-700 mb-1">押金(元)</label>
+                    <input type="number" id="deposit" placeholder="例如：5000" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                </div>
+                
+                <!-- 优惠设置 -->
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <label class="text-sm font-medium text-gray-700">长租优惠</label>
+                        <div class="flex items-center">
+                            <span class="text-xs text-gray-500 mr-2">启用</span>
+                            <div class="relative">
+                                <input type="checkbox" id="discount_toggle" class="sr-only">
+                                <div class="w-10 h-5 bg-gray-200 rounded-full"></div>
+                                <div class="absolute left-0.5 top-0.5 bg-white w-4 h-4 rounded-full transition"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label for="weekly_discount" class="block text-xs text-gray-600 mb-1">周租折扣(%)</label>
+                            <input type="number" id="weekly_discount" placeholder="例如：90" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm">
+                        </div>
+                        <div>
+                            <label for="monthly_discount" class="block text-xs text-gray-600 mb-1">月租折扣(%)</label>
+                            <input type="number" id="monthly_discount" placeholder="例如：80" class="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 车辆图片卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">车辆图片</h2>
+                
+                <!-- 已上传图片 -->
+                <div class="grid grid-cols-3 gap-3 mb-4">
+                    <!-- 占位图片 -->
+                    <div class="relative">
+                        <div class="aspect-w-4 aspect-h-3 bg-gray-100 rounded-lg overflow-hidden">
+                            <div class="flex items-center justify-center text-gray-400">
+                                <i class="fas fa-image text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-times text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-w-4 aspect-h-3 bg-gray-100 rounded-lg overflow-hidden">
+                            <div class="flex items-center justify-center text-gray-400">
+                                <i class="fas fa-image text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-times text-xs"></i>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="aspect-w-4 aspect-h-3 bg-gray-100 rounded-lg overflow-hidden">
+                            <div class="flex items-center justify-center text-gray-400">
+                                <i class="fas fa-image text-3xl"></i>
+                            </div>
+                        </div>
+                        <div class="absolute top-1 right-1 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center">
+                            <i class="fas fa-times text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 上传按钮 -->
+                <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-cloud-upload-alt text-3xl text-gray-400 mb-2"></i>
+                    <div class="text-sm text-gray-600 mb-2">点击或拖拽上传图片</div>
+                    <div class="text-xs text-gray-500">建议尺寸：1080x720, 最多12张</div>
+                    <input type="file" multiple class="hidden" id="image_upload">
+                    <label for="image_upload" class="mt-3 bg-green-500 text-white rounded-lg px-4 py-2 text-sm cursor-pointer">
+                        选择图片
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 车辆描述卡片 -->
+            <div class="bg-white rounded-lg p-4 mb-4">
+                <h2 class="font-medium mb-4 text-gray-800">车辆描述</h2>
+                
+                <div class="mb-4">
+                    <label for="description" class="block text-sm font-medium text-gray-700 mb-1">详细描述</label>
+                    <textarea id="description" rows="5" placeholder="请详细描述车辆特点、适合人群、使用场景等信息..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                </div>
+                
+                <div>
+                    <label for="notice" class="block text-sm font-medium text-gray-700 mb-1">注意事项</label>
+                    <textarea id="notice" rows="3" placeholder="请说明使用时的注意事项、禁止行为等..." class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                </div>
+            </div>
+            
+            <!-- 保存按钮 -->
+            <div class="mt-6">
+                <button type="submit" class="w-full bg-green-500 text-white py-3 rounded-lg font-medium">保存车辆信息</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-around py-2">
+        <a href="store-home.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">首页</span>
+        </a>
+        <a href="store-orders.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-clipboard-list text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">订单</span>
+        </a>
+        <a href="store-vehicles.html" class="flex flex-col items-center px-3 py-1 text-green-500">
+            <i class="fas fa-car text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">车辆</span>
+        </a>
+        <a href="store-statistics.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-chart-bar text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">数据</span>
+        </a>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+
+    <style>
+        /* 自定义开关样式 */
+        #discount_toggle:checked + div {
+            background-color: #3B82F6;
+        }
+        #discount_toggle:checked + div + div {
+            transform: translateX(1.25rem);
+        }
+        
+        /* 图片上传区域 */
+        .aspect-w-4 {
+            position: relative;
+            padding-bottom: 75%;
+        }
+        .aspect-h-3 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</body>
+</html> 

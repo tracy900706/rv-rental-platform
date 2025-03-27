@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预订订单 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-24">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="text-base font-medium ml-3">填写订单</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 步骤指示器 -->
+    <div class="bg-white p-4">
+        <div class="flex justify-between items-center relative">
+            <div class="absolute left-0 right-0 top-1/2 h-0.5 bg-gray-200 -z-10"></div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs z-10">1</div>
+                <div class="text-xs mt-1 text-orange-500 font-medium">填写订单</div>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-6 h-6 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-xs z-10">2</div>
+                <div class="text-xs mt-1 text-gray-500">支付定金</div>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-6 h-6 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-xs z-10">3</div>
+                <div class="text-xs mt-1 text-gray-500">支付尾款</div>
+            </div>
+            
+            <div class="flex flex-col items-center">
+                <div class="w-6 h-6 bg-gray-200 text-gray-500 rounded-full flex items-center justify-center text-xs z-10">4</div>
+                <div class="text-xs mt-1 text-gray-500">提车旅行</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 车辆信息 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="flex">
+            <img src="https://images.unsplash.com/photo-1545161296-d9c2c241f2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=140&q=80" alt="房车" class="w-24 h-24 rounded-md object-cover">
+            <div class="ml-3 flex-1">
+                <h3 class="font-bold" id="vehicleName"></h3>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-users mr-1"></i>
+                    <span>宜住4人</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-bed mr-1"></i>
+                    <span>2张床</span>
+                </div>
+                <div class="mt-2">
+                    <span class="text-red-500 font-medium" id="vehiclePrice"></span>
+                    <span class="text-xs text-gray-500">/天</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 租车时间选择 -->
+    <div class="bg-white mt-2 p-4">
+        <h3 class="font-medium mb-3">租车时间</h3>
+        <div class="flex items-center border-b pb-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-calendar-alt mr-2 text-orange-500"></i>
+                取车日期
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <input type="date" id="pickupDate" class="outline-none text-sm w-full">
+            </div>
+        </div>
+        <div class="flex items-center border-b pb-3 pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-clock mr-2 text-orange-500"></i>
+                取车时间
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <select class="outline-none text-sm w-full appearance-none">
+                    <option value="9:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                </select>
+                <i class="fas fa-chevron-down text-gray-300 ml-2"></i>
+            </div>
+        </div>
+        <div class="flex items-center border-b pb-3 pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-calendar-alt mr-2 text-orange-500"></i>
+                还车日期
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <input type="date" id="returnDate" class="outline-none text-sm w-full">
+            </div>
+        </div>
+        <div class="flex items-center pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-clock mr-2 text-orange-500"></i>
+                还车时间
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <select class="outline-none text-sm w-full appearance-none">
+                    <option value="9:00">9:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00" selected>17:00</option>
+                </select>
+                <i class="fas fa-chevron-down text-gray-300 ml-2"></i>
+            </div>
+        </div>
+        <div class="text-sm text-gray-500 mt-3">
+            <i class="fas fa-info-circle text-orange-500 mr-1"></i>
+            租赁3天，适用7天9.5折优惠
+        </div>
+    </div>
+
+    <!-- 取还车地点 -->
+    <div class="bg-white mt-2 p-4">
+        <h3 class="font-medium mb-3">取还车地点</h3>
+        <div class="flex items-center border-b pb-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-map-marker-alt mr-2 text-orange-500"></i>
+                取车地点
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <input type="text" id="pickupLocation" class="outline-none text-sm w-full" readonly>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </div>
+        </div>
+        <div class="flex items-center pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-map-marker-alt mr-2 text-orange-500"></i>
+                还车地点
+            </div>
+            <div class="flex-1 flex justify-between items-center">
+                <input type="text" id="returnLocation" class="outline-none text-sm w-full" readonly>
+                <i class="fas fa-chevron-right text-gray-300"></i>
+            </div>
+        </div>
+        <div class="text-sm text-gray-500 mt-3">
+            <i class="fas fa-info-circle text-yellow-500 mr-1"></i>
+            异地还车需支付额外费用，费用根据距离计算
+        </div>
+    </div>
+
+    <!-- 驾驶人信息 -->
+    <div class="bg-white mt-2 p-4">
+        <h3 class="font-medium mb-3">驾驶人信息</h3>
+        <div class="flex items-center border-b pb-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-user mr-2 text-orange-500"></i>
+                姓名
+            </div>
+            <div class="flex-1">
+                <input type="text" placeholder="请输入真实姓名" class="outline-none text-sm w-full">
+            </div>
+        </div>
+        <div class="flex items-center border-b pb-3 pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-phone mr-2 text-orange-500"></i>
+                手机号
+            </div>
+            <div class="flex-1">
+                <input type="tel" placeholder="请输入手机号" class="outline-none text-sm w-full">
+            </div>
+        </div>
+        <div class="flex items-center border-b pb-3 pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-id-card mr-2 text-orange-500"></i>
+                身份证
+            </div>
+            <div class="flex-1">
+                <input type="text" placeholder="请输入身份证号" class="outline-none text-sm w-full">
+            </div>
+        </div>
+        <div class="flex items-center pt-3">
+            <div class="w-24 text-gray-500 flex items-center">
+                <i class="fas fa-car mr-2 text-orange-500"></i>
+                驾驶证
+            </div>
+            <div class="flex-1">
+                <input type="text" placeholder="请输入驾驶证号" class="outline-none text-sm w-full">
+            </div>
+        </div>
+    </div>
+
+    <!-- 增值服务 -->
+    <div class="bg-white mt-2 p-4">
+        <h3 class="font-medium mb-3">增值服务</h3>
+        
+        <!-- 保险服务 -->
+        <div class="flex justify-between items-center border-b pb-3">
+            <div>
+                <div class="font-medium">基础保险</div>
+                <div class="text-xs text-gray-500 mt-1">车辆划痕、碰撞等基础保障</div>
+            </div>
+            <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                <input type="checkbox" id="insurance" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer right-0 border-orange-500" checked/>
+                <label for="insurance" class="toggle-label block overflow-hidden h-6 rounded-full bg-orange-500 cursor-pointer"></label>
+            </div>
+        </div>
+        
+        <!-- 烧烤架 -->
+        <div class="flex justify-between items-center border-b pb-3 pt-3">
+            <div>
+                <div class="font-medium">便携烧烤架</div>
+                <div class="text-xs text-gray-500 mt-1">露营必备烧烤装备</div>
+            </div>
+            <div class="flex items-center">
+                <div class="text-sm text-gray-500 mr-2">¥50/次</div>
+                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox" id="bbq" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 checked:border-orange-500"/>
+                    <label for="bbq" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer checked:bg-orange-500"></label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 户外桌椅 -->
+        <div class="flex justify-between items-center border-b pb-3 pt-3">
+            <div>
+                <div class="font-medium">户外折叠桌椅</div>
+                <div class="text-xs text-gray-500 mt-1">便携式户外桌椅套装</div>
+            </div>
+            <div class="flex items-center">
+                <div class="text-sm text-gray-500 mr-2">¥80/次</div>
+                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox" id="chairs" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 checked:border-orange-500"/>
+                    <label for="chairs" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer checked:bg-orange-500"></label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 送车服务 -->
+        <div class="flex justify-between items-center pt-3">
+            <div>
+                <div class="font-medium">送车上门服务</div>
+                <div class="text-xs text-gray-500 mt-1">指定地点取还车（限30km内）</div>
+            </div>
+            <div class="flex items-center">
+                <div class="text-sm text-gray-500 mr-2">¥100/次</div>
+                <div class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
+                    <input type="checkbox" id="delivery" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer checked:right-0 checked:border-orange-500"/>
+                    <label for="delivery" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer checked:bg-orange-500"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 优惠券 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="flex justify-between items-center">
+            <div class="font-medium">优惠券</div>
+            <div class="flex items-center text-gray-500" onclick="location.href='#'">
+                <span>2张可用</span>
+                <i class="fas fa-chevron-right ml-2 text-xs"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单备注 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="font-medium mb-2">订单备注</div>
+        <textarea placeholder="如有特殊需求，请在此备注" rows="2" class="w-full p-2 border rounded-md text-sm outline-none"></textarea>
+    </div>
+
+    <!-- 费用明细 -->
+    <div class="bg-white mt-2 p-4">
+        <h3 class="font-medium mb-3">费用明细</h3>
+        <div class="space-y-2 text-sm">
+            <div class="flex justify-between">
+                <span>车辆租赁费</span>
+                <span>¥2697.00</span>
+            </div>
+            <div class="flex justify-between text-orange-500">
+                <span>长租优惠</span>
+                <span>-¥134.85</span>
+            </div>
+            <div class="flex justify-between">
+                <span>基础保险</span>
+                <span>¥150.00</span>
+            </div>
+            <div class="flex justify-between">
+                <span>押金(可退)</span>
+                <span>¥5000.00</span>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="flex justify-between font-medium">
+            <span>总计</span>
+            <span>¥2712.15</span>
+        </div>
+        <div class="text-xs text-gray-500 mt-2">
+            * 需先支付30%定金¥813.65，提车前7天内支付剩余款项
+        </div>
+    </div>
+
+    <!-- 用户协议 -->
+    <div class="mt-2 p-4 flex items-center">
+        <input type="checkbox" id="agreement" class="mr-2" checked>
+        <label for="agreement" class="text-sm text-gray-500">我已阅读并同意<a href="#" class="text-orange-500">《租车服务协议》</a>和<a href="#" class="text-orange-500">《违章处理规定》</a></label>
+    </div>
+
+    <!-- 底部固定操作栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-3 flex items-center justify-between">
+        <div>
+            <div class="text-xs text-gray-500">总计</div>
+            <div class="text-orange-500 font-bold text-lg">¥2712.15</div>
+        </div>
+        <button class="bg-orange-500 text-white px-8 py-3 rounded-lg font-medium" onclick="location.href='order-confirm.html'">
+            支付定金 ¥813.65
+        </button>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <style>
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #f97316;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取URL参数
+            const params = new URLSearchParams(window.location.search);
+            
+            // 填充车辆信息
+            document.getElementById('vehicleName').textContent = params.get('vehicle') || '';
+            document.getElementById('vehiclePrice').textContent = '¥' + (params.get('price') || '0');
+            
+            // 填充日期
+            document.getElementById('pickupDate').value = params.get('pickupDate') || '';
+            document.getElementById('returnDate').value = params.get('returnDate') || '';
+            
+            // 填充地点
+            document.getElementById('pickupLocation').value = params.get('pickupLocation') || '';
+            document.getElementById('returnLocation').value = params.get('returnLocation') || '';
+            
+            // 底部确认按钮点击事件
+            document.querySelector('.fixed.bottom-0 button').addEventListener('click', function() {
+                // 获取所有表单数据
+                const formData = {
+                    vehicle: document.getElementById('vehicleName').textContent,
+                    price: document.getElementById('vehiclePrice').textContent.replace('¥', ''),
+                    pickupDate: document.getElementById('pickupDate').value,
+                    returnDate: document.getElementById('returnDate').value,
+                    pickupLocation: document.getElementById('pickupLocation').value,
+                    returnLocation: document.getElementById('returnLocation').value,
+                    services: Array.from(document.querySelectorAll('input[type="checkbox"]:checked'))
+                        .map(cb => cb.id)
+                        .join(',')
+                };
+                
+                // 构建URL参数
+                const orderParams = new URLSearchParams(formData);
+                
+                // 跳转到订单确认页面
+                window.location.href = 'order-confirm.html?' + orderParams.toString();
+            });
+        });
+    </script>
+</body>
+</html> 

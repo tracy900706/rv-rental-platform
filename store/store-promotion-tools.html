@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广工具 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="text-base font-medium ml-3">推广工具</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 推广任务状态选项卡 -->
+    <div class="bg-white p-2 border-b">
+        <div class="flex items-center overflow-x-auto hide-scrollbar">
+            <div class="px-4 py-2 text-green-500 font-medium border-b-2 border-green-500 whitespace-nowrap">
+                全部任务
+                <span class="ml-1 bg-green-100 text-green-500 text-xs px-1.5 py-0.5 rounded-full">3</span>
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                进行中
+                <span class="ml-1 bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full">2</span>
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                已结束
+                <span class="ml-1 bg-gray-100 text-gray-600 text-xs px-1.5 py-0.5 rounded-full">1</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 搜索筛选区 -->
+    <div class="bg-white p-3 flex items-center space-x-3 border-b">
+        <div class="flex-1 bg-gray-100 rounded-lg flex items-center p-2">
+            <i class="fas fa-search text-gray-400 mr-2"></i>
+            <input type="text" placeholder="搜索推广任务名称" class="bg-transparent border-none outline-none text-sm flex-1">
+        </div>
+        <div class="flex items-center text-sm text-gray-600">
+            <i class="fas fa-sort mr-1"></i>
+            <span>排序</span>
+        </div>
+    </div>
+
+    <!-- 推广任务列表 -->
+    <div class="p-3">
+        <div class="space-y-3">
+            <!-- 推广任务卡片1 - 进行中 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3 border-b border-gray-100 flex justify-between items-center">
+                    <div class="flex-1">
+                        <div class="font-medium">新电商推广计划</div>
+                        <div class="text-xs text-gray-500 mt-1">2023-12-01 至 2024-03-01</div>
+                    </div>
+                    <div class="px-2 py-0.5 bg-green-100 text-green-600 text-xs rounded">进行中</div>
+                </div>
+                <div class="p-3">
+                    <div class="flex mb-3">
+                        <div class="w-16 h-16 bg-green-100 rounded overflow-hidden mr-3">
+                            <div class="w-full h-full flex items-center justify-center text-green-500">
+                                <i class="fas fa-share-alt text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-600">分享房车获得积分奖励，邀请好友注册可获得直接返现</div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs bg-green-50 text-green-500 px-2 py-0.5 rounded">积分奖励</span>
+                                <span class="text-xs bg-green-50 text-green-500 px-2 py-0.5 rounded">分享返利</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <div class="text-gray-500">
+                            <span>参与人数: 156</span>
+                            <span class="mx-2">|</span>
+                            <span>分享数: 879</span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <button class="px-2 py-1 border border-gray-300 text-xs rounded-full whitespace-nowrap">编辑</button>
+                            <button class="px-2 py-1 bg-green-500 text-white text-xs rounded-full whitespace-nowrap">数据</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推广任务卡片2 - 进行中 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3 border-b border-gray-100 flex justify-between items-center">
+                    <div class="flex-1">
+                        <div class="font-medium">经销商分红计划</div>
+                        <div class="text-xs text-gray-500 mt-1">2023-11-15 至 2024-05-15</div>
+                    </div>
+                    <div class="px-2 py-0.5 bg-green-100 text-green-600 text-xs rounded">进行中</div>
+                </div>
+                <div class="p-3">
+                    <div class="flex mb-3">
+                        <div class="w-16 h-16 bg-indigo-100 rounded overflow-hidden mr-3">
+                            <div class="w-full h-full flex items-center justify-center text-indigo-500">
+                                <i class="fas fa-handshake text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-600">成为经销商享受订单分红，推广房车获取持续收益</div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs bg-indigo-50 text-indigo-500 px-2 py-0.5 rounded">经销商</span>
+                                <span class="text-xs bg-red-50 text-red-500 px-2 py-0.5 rounded">订单分红</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <div class="text-gray-500">
+                            <span>经销商: 38人</span>
+                            <span class="mx-2">|</span>
+                            <span>收益订单: 215</span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <button class="px-2 py-1 border border-gray-300 text-xs rounded-full whitespace-nowrap">编辑</button>
+                            <button class="px-2 py-1 bg-green-500 text-white text-xs rounded-full whitespace-nowrap">数据</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推广任务卡片3 - 已结束 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="p-3 border-b border-gray-100 flex justify-between items-center">
+                    <div class="flex-1">
+                        <div class="font-medium">秋季营销挑战赛</div>
+                        <div class="text-xs text-gray-500 mt-1">2023-09-01 至 2023-11-30</div>
+                    </div>
+                    <div class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded">已结束</div>
+                </div>
+                <div class="p-3">
+                    <div class="flex mb-3">
+                        <div class="w-16 h-16 bg-orange-100 rounded overflow-hidden mr-3 opacity-70">
+                            <div class="w-full h-full flex items-center justify-center text-orange-500">
+                                <i class="fas fa-trophy text-2xl"></i>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-600">推广任务榜单挑战，前十名获得现金大奖和品牌合作机会</div>
+                            <div class="flex flex-wrap gap-2 mt-2">
+                                <span class="text-xs bg-gray-50 text-gray-500 px-2 py-0.5 rounded">挑战赛</span>
+                                <span class="text-xs bg-gray-50 text-gray-500 px-2 py-0.5 rounded">现金奖励</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-sm">
+                        <div class="text-gray-500">
+                            <span>参与人数: 325</span>
+                            <span class="mx-2">|</span>
+                            <span>完成率: 68%</span>
+                        </div>
+                        <div class="flex space-x-1">
+                            <button class="px-2 py-1 border border-gray-300 text-xs rounded-full whitespace-nowrap">详情</button>
+                            <button class="px-2 py-1 bg-green-500 text-white text-xs rounded-full whitespace-nowrap">数据</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 推广数据概览 -->
+    <div class="m-3 bg-white rounded-lg shadow-sm overflow-hidden">
+        <div class="px-4 py-3 border-b border-gray-100">
+            <h3 class="font-medium text-gray-700">推广效果概览</h3>
+        </div>
+        <div class="grid grid-cols-3 divide-x">
+            <div class="p-3 text-center">
+                <div class="text-2xl font-bold text-green-600">1,254</div>
+                <div class="text-xs text-gray-500 mt-1">累计推广人数</div>
+            </div>
+            <div class="p-3 text-center">
+                <div class="text-2xl font-bold text-green-600">¥24,680</div>
+                <div class="text-xs text-gray-500 mt-1">累计推广收益</div>
+            </div>
+            <div class="p-3 text-center">
+                <div class="text-2xl font-bold text-purple-600">18%</div>
+                <div class="text-xs text-gray-500 mt-1">转化率</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部悬浮按钮 -->
+    <div class="fixed bottom-5 right-5">
+        <button class="w-12 h-12 bg-green-500 rounded-full shadow-lg flex items-center justify-center text-white">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- 自定义样式 -->
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+
+    <!-- 删除底部导航栏代码 -->
+    <script>
+        // 页面加载完成后通知父页面隐藏导航栏
+        window.parent.postMessage({ action: 'hideBottomNav' }, '*');
+    </script>
+</body>
+</html> 

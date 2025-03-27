@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自驾参团 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="flex-1 text-base font-medium ml-3">自驾参团</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 顶部轮播图 -->
+    <div class="relative h-48 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="自驾参团" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 text-white">
+            <h2 class="text-xl font-bold">自驾参团，体验不一样的旅程</h2>
+            <p class="text-sm mt-1 opacity-90">加入我们的组团自驾，认识志同道合的朋友</p>
+        </div>
+    </div>
+
+    <!-- 活动分类 -->
+    <div class="bg-white p-4 flex space-x-3 overflow-x-auto hide-scrollbar">
+        <div class="px-4 py-1.5 bg-orange-500 text-white rounded-full whitespace-nowrap">全部</div>
+        <div class="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full whitespace-nowrap">周边游</div>
+        <div class="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full whitespace-nowrap">长线自驾</div>
+        <div class="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full whitespace-nowrap">亲子活动</div>
+        <div class="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full whitespace-nowrap">摄影团</div>
+        <div class="px-4 py-1.5 bg-gray-100 text-gray-700 rounded-full whitespace-nowrap">露营地</div>
+    </div>
+
+    <!-- 筛选器 -->
+    <div class="bg-white mt-2 p-4 flex space-x-4 overflow-x-auto hide-scrollbar">
+        <div class="flex items-center whitespace-nowrap">
+            <span class="text-sm text-gray-700">出发时间</span>
+            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500"></i>
+        </div>
+        <div class="flex items-center whitespace-nowrap">
+            <span class="text-sm text-gray-700">目的地</span>
+            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500"></i>
+        </div>
+        <div class="flex items-center whitespace-nowrap">
+            <span class="text-sm text-gray-700">天数</span>
+            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500"></i>
+        </div>
+        <div class="flex items-center whitespace-nowrap">
+            <span class="text-sm text-gray-700">价格</span>
+            <i class="fas fa-chevron-down ml-1 text-xs text-gray-500"></i>
+        </div>
+        <div class="flex items-center whitespace-nowrap">
+            <span class="text-sm text-gray-700">筛选</span>
+            <i class="fas fa-filter ml-1 text-xs text-gray-500"></i>
+        </div>
+    </div>
+
+    <!-- 活动列表 -->
+    <div class="p-4 space-y-4">
+        <!-- 活动卡片1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm" onclick="location.href='#'">
+            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="北戴河3日自驾" class="w-full h-36 object-cover">
+            <div class="p-4">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-lg">北戴河3日自驾游</h3>
+                    <div class="bg-red-100 text-red-500 text-xs px-2 py-0.5 rounded-full">热门</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-07-15 出发</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-user-friends mr-1"></i>
+                    <span>已报15人/限20人</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>北京 - 北戴河</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-calendar-day mr-1"></i>
+                    <span>3天2晚</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                    一起前往北戴河，沙滩烧烤、碧海蓝天，尽享夏日海滩风情。专业领队带队，全程无忧。
+                </p>
+                
+                <!-- 标签 -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <div class="text-xs px-2 py-0.5 bg-orange-100 text-orange-500 rounded-full">沙滩</div>
+                    <div class="text-xs px-2 py-0.5 bg-green-100 text-green-500 rounded-full">烧烤</div>
+                    <div class="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-500 rounded-full">专业领队</div>
+                </div>
+                
+                <!-- 价格和按钮 -->
+                <div class="flex justify-between items-center mt-3">
+                    <div>
+                        <span class="text-red-500 font-bold text-lg">¥899</span>
+                        <span class="text-xs text-gray-500">/人</span>
+                    </div>
+                    <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">立即报名</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动卡片2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm" onclick="location.href='#'">
+            <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="内蒙古草原5日游" class="w-full h-36 object-cover">
+            <div class="p-4">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-lg">内蒙古草原5日深度游</h3>
+                    <div class="bg-green-100 text-green-500 text-xs px-2 py-0.5 rounded-full">火热招募</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-08-05 出发</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-user-friends mr-1"></i>
+                    <span>已报8人/限15人</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>北京 - 锡林郭勒 - 呼伦贝尔</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-calendar-day mr-1"></i>
+                    <span>5天4晚</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                    驾驶房车穿越草原，体验蒙古包住宿，欣赏壮美草原日落，品尝地道蒙古美食，这个夏天等你来！
+                </p>
+                
+                <!-- 标签 -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <div class="text-xs px-2 py-0.5 bg-orange-100 text-orange-500 rounded-full">草原</div>
+                    <div class="text-xs px-2 py-0.5 bg-green-100 text-green-500 rounded-full">篝火晚会</div>
+                    <div class="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-500 rounded-full">蒙古包住宿</div>
+                </div>
+                
+                <!-- 价格和按钮 -->
+                <div class="flex justify-between items-center mt-3">
+                    <div>
+                        <span class="text-red-500 font-bold text-lg">¥1899</span>
+                        <span class="text-xs text-gray-500">/人</span>
+                    </div>
+                    <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">立即报名</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动卡片3 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm" onclick="location.href='#'">
+            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="房山亲子露营" class="w-full h-36 object-cover">
+            <div class="p-4">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-lg">房山区亲子露营2日游</h3>
+                    <div class="bg-purple-100 text-purple-500 text-xs px-2 py-0.5 rounded-full">亲子</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>每周六出发</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-user-friends mr-1"></i>
+                    <span>已报5人/限10组</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>北京 - 房山区百花山</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-calendar-day mr-1"></i>
+                    <span>2天1晚</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                    周末带孩子一起走进自然，露营烧烤、野外拓展、自然教育课程，让孩子们在游戏中学习成长。
+                </p>
+                
+                <!-- 标签 -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <div class="text-xs px-2 py-0.5 bg-orange-100 text-orange-500 rounded-full">亲子互动</div>
+                    <div class="text-xs px-2 py-0.5 bg-green-100 text-green-500 rounded-full">自然教育</div>
+                    <div class="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-500 rounded-full">近郊</div>
+                </div>
+                
+                <!-- 价格和按钮 -->
+                <div class="flex justify-between items-center mt-3">
+                    <div>
+                        <span class="text-red-500 font-bold text-lg">¥599</span>
+                        <span class="text-xs text-gray-500">/成人</span>
+                        <span class="text-red-500 font-bold ml-2">¥399</span>
+                        <span class="text-xs text-gray-500">/儿童</span>
+                    </div>
+                    <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">立即报名</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动卡片4 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-sm" onclick="location.href='#'">
+            <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="青海摄影7日游" class="w-full h-36 object-cover">
+            <div class="p-4">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold text-lg">青海湖摄影7日深度游</h3>
+                    <div class="bg-orange-100 text-orange-500 text-xs px-2 py-0.5 rounded-full">摄影</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-07-25 出发</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-user-friends mr-1"></i>
+                    <span>已报6人/限10人</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>西宁 - 青海湖 - 茶卡盐湖</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-calendar-day mr-1"></i>
+                    <span>7天6晚</span>
+                </div>
+                <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+                    专业摄影老师带队，捕捉青海湖最美日出日落，茶卡盐湖天空之镜，多个绝美取景点，摄影爱好者必选。
+                </p>
+                
+                <!-- 标签 -->
+                <div class="flex flex-wrap gap-2 mt-3">
+                    <div class="text-xs px-2 py-0.5 bg-orange-100 text-orange-500 rounded-full">摄影团</div>
+                    <div class="text-xs px-2 py-0.5 bg-green-100 text-green-500 rounded-full">专业讲解</div>
+                    <div class="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-500 rounded-full">小团精品</div>
+                </div>
+                
+                <!-- 价格和按钮 -->
+                <div class="flex justify-between items-center mt-3">
+                    <div>
+                        <span class="text-red-500 font-bold text-lg">¥3699</span>
+                        <span class="text-xs text-gray-500">/人</span>
+                    </div>
+                    <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">立即报名</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 团长推荐 -->
+    <div class="bg-white mt-2 mb-16">
+        <div class="p-4 border-b">
+            <h3 class="font-bold">热门团长推荐</h3>
+        </div>
+        <div class="p-4">
+            <div class="flex overflow-x-auto pb-2 hide-scrollbar">
+                <div class="flex space-x-4">
+                    <!-- 团长1 -->
+                    <div class="flex flex-col items-center min-w-[80px]">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/35.jpg" alt="团长" class="w-16 h-16 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="text-sm font-medium mt-2">王教练</div>
+                        <div class="text-xs text-gray-500">房车达人</div>
+                    </div>
+                    
+                    <!-- 团长2 -->
+                    <div class="flex flex-col items-center min-w-[80px]">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="团长" class="w-16 h-16 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="text-sm font-medium mt-2">小丽姐</div>
+                        <div class="text-xs text-gray-500">亲子专家</div>
+                    </div>
+                    
+                    <!-- 团长3 -->
+                    <div class="flex flex-col items-center min-w-[80px]">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="团长" class="w-16 h-16 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="text-sm font-medium mt-2">老张</div>
+                        <div class="text-xs text-gray-500">摄影师</div>
+                    </div>
+                    
+                    <!-- 团长4 -->
+                    <div class="flex flex-col items-center min-w-[80px]">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/women/26.jpg" alt="团长" class="w-16 h-16 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-4 h-4 bg-gray-400 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="text-sm font-medium mt-2">小美</div>
+                        <div class="text-xs text-gray-500">美食达人</div>
+                    </div>
+                    
+                    <!-- 团长5 -->
+                    <div class="flex flex-col items-center min-w-[80px]">
+                        <div class="relative">
+                            <img src="https://randomuser.me/api/portraits/men/64.jpg" alt="团长" class="w-16 h-16 rounded-full object-cover">
+                            <div class="absolute bottom-0 right-0 w-4 h-4 bg-gray-400 rounded-full border-2 border-white"></div>
+                        </div>
+                        <div class="text-sm font-medium mt-2">大山</div>
+                        <div class="text-xs text-gray-500">越野达人</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+</body>
+</html> 

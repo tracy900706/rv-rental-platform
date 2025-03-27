@@ -1,0 +1,326 @@
+/* 房车租赁平台自定义CSS */
+
+/* 主题颜色 */
+:root {
+    --primary-color: #f97316; /* 主色调：橙色 */
+    --primary-dark: #ea580c; /* 深橙色 */
+    --secondary-color: #10b981; /* 辅助色：绿色 */
+    --secondary-dark: #047857; /* 深绿色 */
+    --text-color: #1f2937; /* 主文本色 */
+    --text-light: #6b7280; /* 浅色文本 */
+    --bg-light: #f3f4f6; /* 浅色背景 */
+    --bg-white: #ffffff; /* 白色背景 */
+    --danger-color: #ef4444; /* 错误/危险色 */
+    --warning-color: #f59e0b; /* 警告色 */
+    --success-color: #10b981; /* 成功色 */
+}
+
+/* 通用卡片样式 */
+.card {
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-dark);
+}
+
+.btn-outline {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 9px 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* 标签样式 */
+.tag {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.tag-blue {
+    background-color: rgba(249, 115, 22, 0.1);
+    color: var(--primary-color);
+}
+
+.tag-green {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: var(--secondary-color);
+}
+
+.tag-orange {
+    background-color: rgba(245, 158, 11, 0.1);
+    color: var(--warning-color);
+}
+
+.tag-red {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: var(--danger-color);
+}
+
+/* 输入框样式 */
+.input-field {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* 选择器样式 */
+.select-field {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: white;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+}
+
+.select-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+}
+
+/* 分割线 */
+.divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin: 16px 0;
+}
+
+/* 列表项样式 */
+.list-item {
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+/* 头像样式 */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 评分星星 */
+.stars {
+    display: flex;
+    color: #f59e0b;
+}
+
+/* 折扣标签 */
+.discount-tag {
+    background-color: var(--danger-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+/* 价格样式 */
+.price {
+    font-weight: bold;
+    color: var(--danger-color);
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: var(--text-light);
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+/* 加载动画 */
+.loader {
+    border: 3px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 3px solid var(--primary-color);
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 页面头部 */
+.page-header {
+    padding: 16px;
+    background-color: var(--bg-white);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* 底部操作栏 */
+.action-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--bg-white);
+    padding: 16px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+/* 车辆卡片样式 */
+.vehicle-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-white);
+    margin-bottom: 16px;
+}
+
+.vehicle-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+}
+
+.vehicle-info {
+    padding: 12px;
+}
+
+/* 营销活动卡片 */
+.marketing-card {
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120px;
+}
+
+/* 用户评价样式 */
+.review-card {
+    background-color: var(--bg-white);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.review-content {
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.review-time {
+    color: var(--text-light);
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* 游玩路线卡片 */
+.route-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-white);
+    margin-bottom: 16px;
+}
+
+.route-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.route-info {
+    padding: 12px;
+}
+
+/* 页面内容向下移动 */
+.page-content {
+    padding-top: 12px;
+}
+
+/* 统一页面标题样式 */
+.page-title {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+} 

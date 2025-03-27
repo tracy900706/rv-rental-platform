@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部搜索栏 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm">
+        <div class="flex items-center">
+            <!-- 位置选择 -->
+            <div class="flex items-center text-gray-700 mr-2">
+                <i class="fas fa-map-marker-alt text-blue-500"></i>
+                <span class="ml-1">北京市</span>
+                <i class="fas fa-chevron-down text-xs ml-1"></i>
+            </div>
+            <!-- 搜索框 -->
+            <div class="flex-1 bg-gray-100 rounded-full px-4 py-2 flex items-center">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" placeholder="搜索房车车型、目的地" class="bg-transparent w-full outline-none text-sm">
+            </div>
+        </div>
+    </div>
+
+    <!-- 轮播图 -->
+    <div class="relative h-40 overflow-hidden">
+        <!-- 轮播内容区 -->
+        <div class="carousel-container relative w-full h-full">
+            <!-- 轮播项1：原banner -->
+            <div class="carousel-item absolute inset-0 opacity-100 transition-opacity duration-500">
+                <div class="absolute inset-0">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Banner" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/60 to-green-500/60"></div>
+                </div>
+                <div class="relative p-4 text-white h-full flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-2">开启自驾探险之旅</h2>
+                    <p class="text-sm opacity-90">精选房车，尊享优惠，开启您的自由之旅</p>
+                    <button class="bg-white text-blue-500 rounded-full py-2 px-6 mt-4 font-semibold text-sm shadow-lg w-40">立即预订</button>
+                </div>
+            </div>
+            
+            <!-- 轮播项2：新人专享 -->
+            <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, #3b82f6, #2dd4bf);">
+                </div>
+                <div class="relative p-4 text-white h-full flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-2">新人专享</h2>
+                    <p class="text-sm opacity-90">首单立减¥100，开启您的房车之旅</p>
+                    <button class="bg-white text-blue-500 rounded-full py-2 px-6 mt-4 font-semibold text-sm shadow-lg w-40">立即查看</button>
+                </div>
+            </div>
+            
+            <!-- 轮播项3：拼团优惠 -->
+            <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                </div>
+                <div class="relative p-4 text-white h-full flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-2">拼团优惠</h2>
+                    <p class="text-sm opacity-90">5人拼团享8折，与好友共享欢乐时光</p>
+                    <button class="bg-white text-orange-500 rounded-full py-2 px-6 mt-4 font-semibold text-sm shadow-lg w-40">立即查看</button>
+                </div>
+            </div>
+            
+            <!-- 轮播项4：长租特惠 -->
+            <div class="carousel-item absolute inset-0 opacity-0 transition-opacity duration-500">
+                <div class="absolute inset-0" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                </div>
+                <div class="relative p-4 text-white h-full flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold mb-2">长租特惠</h2>
+                    <p class="text-sm opacity-90">30天以上享8折，长期旅行更划算</p>
+                    <button class="bg-white text-purple-500 rounded-full py-2 px-6 mt-4 font-semibold text-sm shadow-lg w-40">立即查看</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 轮播指示器 -->
+        <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+            <div class="carousel-dot w-2 h-2 rounded-full bg-white opacity-100"></div>
+            <div class="carousel-dot w-2 h-2 rounded-full bg-white opacity-60"></div>
+            <div class="carousel-dot w-2 h-2 rounded-full bg-white opacity-60"></div>
+            <div class="carousel-dot w-2 h-2 rounded-full bg-white opacity-60"></div>
+        </div>
+    </div>
+
+    <!-- 功能导航按钮 -->
+    <div class="bg-white p-4">
+        <div class="grid grid-cols-3 gap-4">
+            <!-- 第一排 -->
+            <!-- 特惠租车 -->
+            <a href="search.html" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-car text-blue-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">特惠租车</span>
+            </a>
+            <!-- 优惠活动 -->
+            <a href="marketing.html" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-gift text-red-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">优惠活动</span>
+            </a>
+            <!-- 积分商城 -->
+            <a href="points-mall.html" class="flex flex-col items-center">
+                <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-coins text-purple-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">积分商城</span>
+            </a>
+            <!-- 第二排 -->
+            <!-- 游玩推荐 -->
+            <a href="travel-routes.html" class="flex flex-col items-center mt-3">
+                <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-map-marked-alt text-green-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">游玩推荐</span>
+            </a>
+            <!-- 自驾参团 -->
+            <a href="group-tour.html" class="flex flex-col items-center mt-3">
+                <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-users text-yellow-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">自驾参团</span>
+            </a>
+            <!-- 房车维修 -->
+            <a href="vehicle-repair.html" class="flex flex-col items-center mt-3">
+                <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mb-1">
+                    <i class="fas fa-tools text-cyan-500 text-sm"></i>
+                </div>
+                <span class="text-xs text-gray-700 text-center">房车维修</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- 快速预订 -->
+    <div class="bg-white p-4 mt-2 rounded-xl shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="text-lg font-bold text-gray-800">快速预订</h3>
+            <div class="bg-blue-50 text-blue-600 text-xs px-2 py-1 rounded-full font-medium">立享优惠</div>
+        </div>
+        
+        <!-- 表单区域 - 参考用户提供的图片设计 -->
+        <div class="bg-gray-50 rounded-xl p-4">
+            <!-- 取还车地点区域 -->
+            <div class="mb-3">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="text-base font-medium text-gray-700">取还车地点</div>
+                    <!-- 异地还车开关 -->
+                    <div class="flex items-center">
+                        <span class="text-sm text-gray-600 mr-2">异地还车</span>
+                        <label class="relative inline-block w-12 h-6 cursor-pointer">
+                            <input type="checkbox" class="peer sr-only" id="toggleDropoff" onchange="toggleDropoffLocation()">
+                            <div class="w-12 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-500 peer-checked:after:translate-x-6 after:absolute after:top-0.5 after:left-0.5 after:bg-white after:w-5 after:h-5 after:rounded-full after:transition-all"></div>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- 取车地点选择 -->
+                <div class="flex items-center justify-between bg-white rounded-lg p-3 mb-2">
+                    <div class="flex items-center">
+                        <div class="mr-2 text-gray-500">取</div>
+                        <div class="font-bold text-lg">北京</div>
+                        <i class="fas fa-chevron-down text-gray-400 ml-2 text-xs"></i>
+                    </div>
+                    <div class="font-medium">
+                        劲松三区附近
+                        <i class="fas fa-chevron-down text-gray-400 ml-2 text-xs"></i>
+                    </div>
+                </div>
+                
+                <!-- 还车地点选择 (与取车地点相同的布局) - 默认隐藏 -->
+                <div id="dropoffLocation" class="flex items-center justify-between bg-white rounded-lg p-3 mb-1 hidden">
+                    <div class="flex items-center">
+                        <div class="mr-2 text-gray-500">还</div>
+                        <div class="font-bold text-lg">北京</div>
+                        <i class="fas fa-chevron-down text-gray-400 ml-2 text-xs"></i>
+                    </div>
+                    <div class="font-medium">
+                        劲松三区附近
+                        <i class="fas fa-chevron-down text-gray-400 ml-2 text-xs"></i>
+                    </div>
+                </div>
+                
+                <!-- 异地还车提示 - 默认隐藏 -->
+                <div id="dropoffFeeWarning" class="text-xs text-orange-500 flex items-center hidden">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    <span>可能产生异地还车费</span>
+                </div>
+            </div>
+            
+            <!-- 取还车时间区域 -->
+            <div>
+                <div class="text-base font-medium text-gray-700 mb-2">取还车时间</div>
+                
+                <!-- 时间选择区 -->
+                <div class="flex justify-between items-center bg-white rounded-lg p-3">
+                    <!-- 左侧：取车日期时间 -->
+                    <div class="text-center">
+                        <div class="font-bold text-xl">03月27日</div>
+                        <div class="text-sm text-gray-500">今天 10:00</div>
+                    </div>
+                    
+                    <!-- 中间：时长 -->
+                    <div class="flex flex-col items-center">
+                        <div class="h-px w-16 bg-gray-300 mb-1"></div>
+                        <div class="text-gray-500 text-sm">2天</div>
+                        <div class="h-px w-16 bg-gray-300 mt-1"></div>
+                    </div>
+                    
+                    <!-- 右侧：还车日期时间 -->
+                    <div class="text-center">
+                        <div class="font-bold text-xl">03月29日</div>
+                        <div class="text-sm text-gray-500">周六 10:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 搜索按钮 -->
+        <button class="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl mt-4 font-semibold shadow-md flex items-center justify-center">
+            <i class="fas fa-search mr-2"></i>
+            搜索房车
+        </button>
+        
+        <!-- 热门推荐标签 -->
+        <div class="mt-3 flex items-center">
+            <div class="text-xs text-gray-500 mr-2">热门推荐:</div>
+            <div class="flex flex-wrap gap-2">
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">长城自驾</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">草原露营</span>
+                <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded-full text-xs">山景</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 推荐房车 -->
+    <div class="mt-2 p-4 bg-white">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="text-lg font-semibold">热门房车</h3>
+            <a href="search.html" class="text-sm text-gray-500 flex items-center">
+                查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+            <!-- 房车卡片1 -->
+            <div class="vehicle-card" onclick="location.href='vehicle-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1545161296-d9c2c241f2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="vehicle-image">
+                    <span class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded-md">热门</span>
+                </div>
+                <div class="p-3">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-base font-bold">豪华C型房车</h4>
+                        <div class="flex items-center text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-500 ml-1">4.5分</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-users mr-1"></i>
+                        <span>宜住4人</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-bed mr-1"></i>
+                        <span>2张床</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-car mr-1"></i>
+                        <span>C照可驾</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-xs text-gray-500">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>劲松三区店</span>
+                        <span class="ml-2 bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded-full">距您2.5km</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold text-lg">¥899</span>
+                            <span class="text-xs text-gray-400 ml-1 line-through">¥1099</span>
+                            <span class="text-xs text-gray-500">/天</span>
+                        </div>
+                        <button class="bg-blue-500 text-white text-sm px-3 py-1 rounded-full">预订</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 房车卡片2 -->
+            <div class="vehicle-card" onclick="location.href='vehicle-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1500576992153-0271099def59?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="vehicle-image">
+                    <span class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md">新车</span>
+                </div>
+                <div class="p-3">
+                    <div class="flex justify-between items-start">
+                        <h4 class="text-base font-bold">豪华B型房车</h4>
+                        <div class="flex items-center text-yellow-400 text-xs">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="text-gray-500 ml-1">4.0分</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-users mr-1"></i>
+                        <span>宜住2人</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-bed mr-1"></i>
+                        <span>1张床</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-car mr-1"></i>
+                        <span>C照可驾</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-xs text-gray-500">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>望京SOHO店</span>
+                        <span class="ml-2 bg-blue-100 text-blue-600 px-1.5 py-0.5 rounded-full">距您5.6km</span>
+                    </div>
+                    <div class="flex items-end justify-between mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold text-lg">¥699</span>
+                            <span class="text-xs text-gray-400 ml-1 line-through">¥899</span>
+                            <span class="text-xs text-gray-500">/天</span>
+                        </div>
+                        <button class="bg-blue-500 text-white text-sm px-3 py-1 rounded-full">预订</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 游玩推荐 -->
+    <div class="mt-2 p-4 bg-white">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="text-lg font-semibold">游玩推荐</h3>
+            <a href="travel-routes.html" class="text-sm text-gray-500 flex items-center">
+                查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+        </div>
+        
+        <!-- 分类标签 -->
+        <div class="flex space-x-4 mb-3">
+            <div class="px-3 py-1 bg-blue-500 text-white rounded-full text-sm font-medium">露营地</div>
+            <div class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">路线</div>
+        </div>
+        
+        <div class="flex space-x-3 overflow-x-auto pb-2 hide-scrollbar">
+            <!-- 露营地卡片1 -->
+            <div class="route-card min-w-[250px]">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="露营地" class="route-image">
+                <div class="p-3">
+                    <h4 class="font-bold">北京怀柔慕田峪露营基地</h4>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-map-pin mr-1 text-green-500"></i>
+                        <span>怀柔区 - 长城脚下</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-campground mr-1 text-orange-500"></i>
+                        <span>拥有完善设施</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 line-clamp-2">长城下的豪华露营体验，配备完善的卫浴和烧烤设施，夜晚可观星...</p>
+                </div>
+            </div>
+            
+            <!-- 露营地卡片2 -->
+            <div class="route-card min-w-[250px]">
+                <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="露营地" class="route-image">
+                <div class="p-3">
+                    <h4 class="font-bold">密云古北水镇星空露营</h4>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-map-pin mr-1 text-green-500"></i>
+                        <span>密云区 - 水镇附近</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-campground mr-1 text-orange-500"></i>
+                        <span>湖边营地</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 line-clamp-2">水镇旁的露营基地，可以体验湖边日出和篝火晚会，提供帐篷租赁...</p>
+                </div>
+            </div>
+            
+            <!-- 路线卡片1 -->
+            <div class="route-card min-w-[250px]">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="路线" class="route-image">
+                <div class="p-3">
+                    <h4 class="font-bold">京郊房山十渡自驾路线</h4>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-route mr-1 text-blue-500"></i>
+                        <span>北京 - 房山</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-calendar-alt mr-1 text-blue-500"></i>
+                        <span>1-2天</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-2 line-clamp-2">探访京郊奇峰十渡，沿途风景如画，适合周末短途自驾游玩...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自驾参团 -->
+    <div class="mt-2 p-4 bg-white mb-2">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="text-lg font-semibold">自驾参团</h3>
+            <a href="group-tour.html" class="text-sm text-gray-500 flex items-center">
+                查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 gap-4">
+            <!-- 参团卡片1 -->
+            <div class="vehicle-card" onclick="location.href='group-tour-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="参团" class="vehicle-image">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-md">5人团</div>
+                </div>
+                <div class="p-3">
+                    <h4 class="font-bold">新疆伊犁草原房车之旅</h4>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-users mr-1"></i>
+                        <span>已参团4/5人</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>9天8晚</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold text-lg">¥6999</span>
+                            <span class="text-xs text-gray-400 ml-1 line-through">¥8999</span>
+                            <span class="text-xs text-gray-500">/人</span>
+                        </div>
+                        <button class="bg-red-500 text-white text-sm px-3 py-1 rounded-full">立即拼团</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 参团卡片2 -->
+            <div class="vehicle-card" onclick="location.href='group-tour-detail.html'">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1527786356703-4b100091cd2c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="参团" class="vehicle-image">
+                    <div class="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-md">3人团</div>
+                </div>
+                <div class="p-3">
+                    <h4 class="font-bold">海南环岛房车体验</h4>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-users mr-1"></i>
+                        <span>已参团2/3人</span>
+                        <span class="mx-2">|</span>
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        <span>6天5晚</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div>
+                            <span class="text-red-500 font-bold text-lg">¥4999</span>
+                            <span class="text-xs text-gray-400 ml-1 line-through">¥5999</span>
+                            <span class="text-xs text-gray-500">/人</span>
+                        </div>
+                        <button class="bg-blue-500 text-white text-sm px-3 py-1 rounded-full">立即拼团</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+    <script>
+        // 异地还车开关功能
+        function toggleDropoffLocation() {
+            const isChecked = document.getElementById('toggleDropoff').checked;
+            const dropoffLocation = document.getElementById('dropoffLocation');
+            const dropoffFeeWarning = document.getElementById('dropoffFeeWarning');
+            
+            if (isChecked) {
+                dropoffLocation.classList.remove('hidden');
+                dropoffFeeWarning.classList.remove('hidden');
+            } else {
+                dropoffLocation.classList.add('hidden');
+                dropoffFeeWarning.classList.add('hidden');
+            }
+        }
+        
+        // 轮播功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselItems = document.querySelectorAll('.carousel-item');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            
+            function showSlide(index) {
+                // 隐藏所有轮播项
+                carouselItems.forEach(item => {
+                    item.classList.remove('opacity-100');
+                    item.classList.add('opacity-0');
+                });
+                
+                // 重置所有指示器
+                dots.forEach(dot => {
+                    dot.classList.remove('opacity-100');
+                    dot.classList.add('opacity-60');
+                });
+                
+                // 显示当前轮播项和指示器
+                carouselItems[index].classList.remove('opacity-0');
+                carouselItems[index].classList.add('opacity-100');
+                dots[index].classList.remove('opacity-60');
+                dots[index].classList.add('opacity-100');
+            }
+            
+            // 自动轮播
+            function autoSlide() {
+                currentIndex = (currentIndex + 1) % carouselItems.length;
+                showSlide(currentIndex);
+            }
+            
+            // 设置点击事件
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    showSlide(currentIndex);
+                });
+            });
+            
+            // 启动自动轮播
+            const intervalId = setInterval(autoSlide, 3000);
+            
+            // 鼠标悬停时暂停轮播
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(intervalId);
+            });
+            
+            // 鼠标离开时继续轮播
+            carouselContainer.addEventListener('mouseleave', () => {
+                clearInterval(intervalId);
+                setInterval(autoSlide, 3000);
+            });
+        });
+    </script>
+</body>
+</html>

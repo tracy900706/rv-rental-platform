@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="text-base font-medium ml-3">我的订单</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 订单状态选项卡 -->
+    <div class="bg-white">
+        <div class="flex border-b">
+            <div class="flex-1 text-center py-3 border-b-2 border-orange-500 text-orange-500 font-medium">全部</div>
+            <div class="flex-1 text-center py-3 text-gray-500">待确认</div>
+            <div class="flex-1 text-center py-3 text-gray-500">进行中</div>
+            <div class="flex-1 text-center py-3 text-gray-500">已完成</div>
+        </div>
+    </div>
+
+    <!-- 订单列表 -->
+    <div class="p-4 space-y-4">
+        <!-- 订单1：待付尾款 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden" onclick="location.href='order-detail.html'">
+            <div class="p-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-car-side text-orange-500 mr-2"></i>
+                        <h3 class="font-medium">豪华C型房车</h3>
+                    </div>
+                    <div class="text-orange-500 text-sm font-medium">待付尾款</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-07-10 09:00 至 2023-07-13 17:00</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>自由房车租赁 · 北京旗舰店</span>
+                </div>
+                <div class="divider my-3"></div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-500">
+                        总金额: <span class="text-orange-500 font-medium">¥2712.15</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="min-w-[85px] px-4 py-1.5 border border-gray-300 rounded-full text-sm text-gray-500 whitespace-nowrap">取消订单</button>
+                        <button class="min-w-[85px] px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm whitespace-nowrap">支付尾款</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 订单2：租赁中 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden" onclick="location.href='order-detail.html'">
+            <div class="p-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-car-side text-orange-500 mr-2"></i>
+                        <h3 class="font-medium">经典A型房车</h3>
+                    </div>
+                    <div class="text-orange-500 text-sm font-medium">租赁中</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-06-25 10:00 至 2023-07-02 15:00</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>自由房车租赁 · 北京旗舰店</span>
+                </div>
+                <div class="divider my-3"></div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-500">
+                        总金额: <span class="text-orange-500 font-medium">¥4599.00</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="min-w-[85px] px-4 py-1.5 border border-gray-300 rounded-full text-sm text-gray-500 whitespace-nowrap">联系客服</button>
+                        <button class="min-w-[85px] px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm whitespace-nowrap">延长租期</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 订单3：已完成 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden" onclick="location.href='order-detail.html'">
+            <div class="p-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-car-side text-orange-500 mr-2"></i>
+                        <h3 class="font-medium">舒适B+型房车</h3>
+                    </div>
+                    <div class="text-gray-500 text-sm font-medium">已完成</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-05-15 09:00 至 2023-05-20 17:00</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>自由房车租赁 · 北京旗舰店</span>
+                </div>
+                <div class="divider my-3"></div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-500">
+                        总金额: <span class="text-orange-500 font-medium">¥3599.00</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="min-w-[85px] px-4 py-1.5 border border-gray-300 rounded-full text-sm text-gray-500 whitespace-nowrap">查看评价</button>
+                        <button class="min-w-[85px] px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm whitespace-nowrap">再次预订</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 订单4：已取消 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden" onclick="location.href='order-detail.html'">
+            <div class="p-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-car-side text-orange-500 mr-2"></i>
+                        <h3 class="font-medium">豪华B型房车</h3>
+                    </div>
+                    <div class="text-gray-400 text-sm font-medium">已取消</div>
+                </div>
+                <div class="flex items-center mt-2 text-sm text-gray-500">
+                    <i class="fas fa-calendar-alt mr-1"></i>
+                    <span>2023-04-10 09:00 至 2023-04-15 17:00</span>
+                </div>
+                <div class="flex items-center mt-1 text-sm text-gray-500">
+                    <i class="fas fa-map-marker-alt mr-1"></i>
+                    <span>自由房车租赁 · 北京旗舰店</span>
+                </div>
+                <div class="divider my-3"></div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-500">
+                        已退款: <span class="text-orange-500 font-medium">¥599.70</span>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="min-w-[85px] px-4 py-1.5 border border-gray-300 rounded-full text-sm text-gray-500 whitespace-nowrap">查看详情</button>
+                        <button class="min-w-[85px] px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm whitespace-nowrap">再次预订</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 无订单状态 -->
+    <div class="hidden flex flex-col items-center justify-center pt-12">
+        <img src="https://img.icons8.com/fluency/96/000000/order.png" alt="无订单" class="w-24 h-24 mb-4 opacity-50">
+        <p class="text-gray-500 mb-6">您还没有订单，快去预订房车吧！</p>
+        <button class="px-6 py-2 bg-orange-500 text-white rounded-full" onclick="location.href='home.html'">立即预订</button>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+</body>
+</html> 

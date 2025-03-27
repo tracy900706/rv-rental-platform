@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门店首页 - 自由房车</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-container {
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="page-container">
+        <!-- 销售数据统计卡片 -->
+        <div class="bg-white rounded-lg p-4 m-4">
+            <div class="mb-4">
+                <h3 class="text-gray-700 text-lg font-medium mb-4">本月销售数据</h3>
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-2xl font-bold text-green-500">¥128,500</div>
+                    <div class="text-gray-500">/ ¥150,000</div>
+                </div>
+                <!-- 进度条 -->
+                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                    <div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
+                </div>
+                <div class="flex justify-between mt-2 text-sm">
+                    <div class="text-gray-600">本月目标完成率: 85%</div>
+                    <div class="text-gray-600">剩余15天</div>
+                </div>
+            </div>
+            
+            <!-- 每周销售趋势图 -->
+            <div>
+                <canvas id="salesChart" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 初始化销售趋势图
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                datasets: [{
+                    label: '日销售额',
+                    data: [15000, 18000, 12000, 20000, 16000, 22000, 25000],
+                    borderColor: 'rgb(34, 197, 94)',
+                    backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                    tension: 0.4,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

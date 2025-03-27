@@ -1,0 +1,47 @@
+<!-- 功能导航按钮 -->
+<div class="bg-white p-4">
+    <div class="grid grid-cols-3 gap-4">
+        <!-- 特惠租车 -->
+        <a href="search.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center mb-1">
+                <i class="fas fa-car text-blue-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">特惠租车</span>
+        </a>
+        <!-- 优惠活动 -->
+        <a href="marketing.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                <i class="fas fa-gift text-red-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">优惠活动</span>
+        </a>
+        <!-- 积分商城 -->
+        <a href="points-mall.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                <i class="fas fa-coins text-purple-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">积分商城</span>
+        </a>
+        <!-- 游玩推荐 -->
+        <a href="travel-routes.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                <i class="fas fa-map-marked-alt text-green-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">游玩推荐</span>
+        </a>
+        <!-- 自驾参团 -->
+        <a href="group-tour.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
+                <i class="fas fa-users text-yellow-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">自驾参团</span>
+        </a>
+        <!-- 房车维修 -->
+        <a href="vehicle-repair.html" class="flex flex-col items-center">
+            <div class="w-14 h-14 rounded-full bg-cyan-100 flex items-center justify-center mb-1">
+                <i class="fas fa-tools text-cyan-500 text-lg"></i>
+            </div>
+            <span class="text-xs text-gray-700 text-center">房车维修</span>
+        </a>
+    </div>
+</div>

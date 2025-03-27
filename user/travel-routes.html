@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游玩推荐 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button class="text-gray-600" onclick="history.back()">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="flex-1 text-base font-medium ml-3">游玩路线</h1>
+        <div class="w-8"></div>
+    </div>
+
+    <!-- 分类选项卡 -->
+    <div class="bg-white p-2 border-b">
+        <div class="flex items-center overflow-x-auto hide-scrollbar">
+            <div class="px-4 py-2 text-orange-500 font-medium border-b-2 border-orange-500 whitespace-nowrap">
+                精选路线
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                精选营地
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                热门路线
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                周边游
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                长途旅行
+            </div>
+            <div class="px-4 py-2 text-gray-600 whitespace-nowrap">
+                亲子游
+            </div>
+        </div>
+    </div>
+
+    <!-- 线路推荐区域 -->
+    <div class="p-3">
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-medium">线路推荐</h2>
+            <a href="#" class="text-orange-500 text-sm">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+        
+        <!-- 路线卡片1 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="路线图片" class="w-full h-48 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                    <div class="text-white font-medium">京郊环线三日游</div>
+                    <div class="text-white text-xs opacity-85">游览京郊名胜，含怀柔慕田峪长城、密云古北水镇等景点</div>
+                </div>
+                <div class="absolute top-2 right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">推荐</div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>北京市 → 怀柔 → 密云 → 北京市</span>
+                    </div>
+                    <div class="text-orange-500 font-medium">¥1,980起</div>
+                </div>
+                <div class="mt-2 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-calendar-alt mr-1"></i>
+                            <span>3天</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-user-friends mr-1"></i>
+                            <span>已有68人预订</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs text-orange-500">
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.7分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 路线卡片2 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="路线图片" class="w-full h-48 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                    <div class="text-white font-medium">承德避暑山庄两日游</div>
+                    <div class="text-white text-xs opacity-85">游览承德避暑山庄、外八庙等世界文化遗产景点</div>
+                </div>
+                <div class="absolute top-2 right-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">推荐</div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>北京市 → 承德市 → 北京市</span>
+                    </div>
+                    <div class="text-orange-500 font-medium">¥1,580起</div>
+                </div>
+                <div class="mt-2 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-calendar-alt mr-1"></i>
+                            <span>2天</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-user-friends mr-1"></i>
+                            <span>已有42人预订</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs text-orange-500">
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.5分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 营地推荐区域 -->
+    <div class="p-3 pt-0">
+        <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-medium">营地推荐</h2>
+            <a href="#" class="text-orange-500 text-sm">查看全部 <i class="fas fa-chevron-right text-xs"></i></a>
+        </div>
+
+        <!-- 营地卡片1 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="营地图片" class="w-full h-48 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                    <div class="text-white font-medium">怀柔静谧森林营地</div>
+                    <div class="text-white text-xs opacity-85">环境优美的森林营地，拥有完善的房车配套设施</div>
+                </div>
+                <div class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">精选</div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>北京市怀柔区交椅山路88号</span>
+                    </div>
+                    <div class="text-orange-500 font-medium">¥280起/天</div>
+                </div>
+                <div class="mt-2 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-charging-station mr-1"></i>
+                            <span>可供电</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-water mr-1"></i>
+                            <span>可供水</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-toilet mr-1"></i>
+                            <span>卫浴设施</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs text-orange-500">
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <span class="ml-1">4.8分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 营地卡片2 -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="营地图片" class="w-full h-48 object-cover">
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-3">
+                    <div class="text-white font-medium">延庆金海湖畔营地</div>
+                    <div class="text-white text-xs opacity-85">湖景房车营地，可观赏日出日落，配有烧烤区</div>
+                </div>
+                <div class="absolute top-2 right-2 bg-purple-500 text-white text-xs px-2 py-1 rounded-full">热门</div>
+            </div>
+            <div class="p-3">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">
+                        <i class="fas fa-map-marker-alt text-red-500 mr-1"></i>
+                        <span>北京市延庆区金海湖景区内</span>
+                    </div>
+                    <div class="text-orange-500 font-medium">¥320起/天</div>
+                </div>
+                <div class="mt-2 flex items-center justify-between">
+                    <div class="flex items-center">
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-charging-station mr-1"></i>
+                            <span>可供电</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500 mr-3">
+                            <i class="fas fa-water mr-1"></i>
+                            <span>可供水</span>
+                        </div>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <i class="fas fa-wifi mr-1"></i>
+                            <span>WiFi</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex items-center text-xs text-orange-500">
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star mr-0.5"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="ml-1">4.6分</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自定义样式 -->
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    
+    <script>
+        // 通知父页面隐藏导航栏
+        window.parent.postMessage({ action: 'hideBottomNav' }, '*');
+    </script>
+</body>
+</html> 

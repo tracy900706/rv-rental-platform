@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 页面头部 -->
+    <header class="bg-white shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <div class="text-lg font-medium">我的</div>
+        </div>
+    </header>
+    
+    <!-- 用户信息头部 -->
+    <div class="bg-orange-500 pt-10 pb-20 px-6 relative">
+        <div class="flex items-center">
+            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="用户头像" class="w-16 h-16 rounded-full border-2 border-white">
+            <div class="ml-4 text-white">
+                <h1 class="text-xl font-bold">张先生</h1>
+                <div class="flex items-center mt-1">
+                    <div class="bg-yellow-400 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full flex items-center">
+                        <i class="fas fa-crown text-xs mr-1"></i>
+                        <span>黄金会员</span>
+                    </div>
+                    <div class="ml-2 text-xs opacity-80">会员折扣: 8折</div>
+                </div>
+            </div>
+            <div class="absolute right-6 top-6 text-white">
+                <i class="fas fa-cog text-xl"></i>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 钱包余额 -->
+    <div class="mt-3 px-4">
+        <div class="bg-white rounded-lg p-4">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center">
+                    <i class="fas fa-wallet text-orange-500 mr-2"></i>
+                    <span class="text-sm text-gray-700 font-medium">钱包余额</span>
+                </div>
+                <div class="text-xl font-bold text-orange-500">¥350.00</div>
+            </div>
+            <div class="grid grid-cols-3 gap-4">
+                <a href="#" class="bg-gray-50 rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-money-bill text-orange-500 text-lg mb-2"></i>
+                    <span class="text-xs text-gray-600">充值</span>
+                </a>
+                <a href="#" class="bg-gray-50 rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-credit-card text-orange-500 text-lg mb-2"></i>
+                    <span class="text-xs text-gray-600">提现</span>
+                </a>
+                <a href="#" class="bg-gray-50 rounded-lg p-4 flex flex-col items-center">
+                    <i class="fas fa-list-ul text-orange-500 text-lg mb-2"></i>
+                    <span class="text-xs text-gray-600">明细</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 我的订单 -->
+    <div class="mt-3 px-4">
+        <div class="bg-white rounded-lg overflow-hidden">
+            <!-- 订单标题 -->
+            <div class="p-4 border-b">
+                <h2 class="text-base font-bold text-gray-800">我的订单</h2>
+            </div>
+            
+            <!-- 订单状态导航 -->
+            <div class="flex justify-between bg-gray-50 py-3 px-2">
+                <a href="order-list.html" class="flex flex-col items-center flex-1">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mb-1 shadow-sm">
+                        <i class="fas fa-clipboard-list text-gray-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">全部订单</span>
+                </a>
+                <a href="order-list.html?status=unpaid" class="flex flex-col items-center flex-1">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mb-1 shadow-sm">
+                        <i class="fas fa-wallet text-orange-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">待付款</span>
+                </a>
+                <a href="order-list.html?status=undelivered" class="flex flex-col items-center flex-1">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mb-1 shadow-sm">
+                        <i class="fas fa-car text-green-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">待取车</span>
+                </a>
+                <a href="order-list.html?status=using" class="flex flex-col items-center flex-1">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mb-1 shadow-sm">
+                        <i class="fas fa-route text-orange-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">使用中</span>
+                </a>
+                <a href="order-list.html?status=returning" class="flex flex-col items-center flex-1">
+                    <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center mb-1 shadow-sm">
+                        <i class="fas fa-undo text-purple-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-600">待还车</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 更多服务标题 -->
+    <div class="mt-5 px-4">
+        <h2 class="text-base font-bold text-gray-800">更多服务</h2>
+    </div>
+    
+    <!-- 更多服务 - 网格按钮布局 -->
+    <div class="mt-2 px-4">
+        <div class="bg-white rounded-lg p-4">
+            <div class="grid grid-cols-3 gap-4">
+                <!-- 我的收藏 -->
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-heart text-red-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">我的收藏</span>
+                </a>
+                
+                <!-- 优惠券 -->
+                <a href="#" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-yellow-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-ticket-alt text-yellow-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">优惠券</span>
+                </a>
+                
+                <!-- 积分商城 -->
+                <a href="points-mall.html" class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-gift text-purple-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">积分商城</span>
+                </a>
+                
+                <!-- 推广任务 -->
+                <a href="promotion-tasks.html" class="flex flex-col items-center mt-3">
+                    <div class="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-bullhorn text-orange-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">推广任务</span>
+                </a>
+                
+                <!-- 房车维修 -->
+                <a href="vehicle-repair.html" class="flex flex-col items-center mt-3">
+                    <div class="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-tools text-cyan-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">房车维修</span>
+                </a>
+                
+                <!-- 客服中心 -->
+                <a href="#" class="flex flex-col items-center mt-3">
+                    <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center mb-1">
+                        <i class="fas fa-headset text-green-500 text-sm"></i>
+                    </div>
+                    <span class="text-xs text-gray-700 text-center">客服中心</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 系统设置和帮助 -->
+    <div class="mt-5 px-4">
+        <h2 class="text-base font-bold text-gray-800">设置与帮助</h2>
+    </div>
+    
+    <!-- 设置与帮助功能列表 -->
+    <div class="mt-2 px-4 mb-4">
+        <div class="bg-white rounded-lg overflow-hidden">
+            <div class="divide-y">
+                <!-- 意见反馈 -->
+                <div class="flex justify-between items-center p-4" onclick="location.href='#'">
+                    <div class="flex items-center">
+                        <i class="fas fa-comment-dots text-orange-500 mr-3"></i>
+                        <span class="text-gray-700">意见反馈</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 关于我们 -->
+                <div class="flex justify-between items-center p-4" onclick="location.href='#'">
+                    <div class="flex items-center">
+                        <i class="fas fa-info-circle text-orange-500 mr-3"></i>
+                        <span class="text-gray-700">关于我们</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 用户协议 -->
+                <div class="flex justify-between items-center p-4" onclick="location.href='#'">
+                    <div class="flex items-center">
+                        <i class="fas fa-file-contract text-orange-500 mr-3"></i>
+                        <span class="text-gray-700">用户协议</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 隐私政策 -->
+                <div class="flex justify-between items-center p-4" onclick="location.href='#'">
+                    <div class="flex items-center">
+                        <i class="fas fa-shield-alt text-orange-500 mr-3"></i>
+                        <span class="text-gray-700">隐私政策</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 设置 -->
+                <div class="flex justify-between items-center p-4" onclick="location.href='#'">
+                    <div class="flex items-center">
+                        <i class="fas fa-cog text-orange-500 mr-3"></i>
+                        <span class="text-gray-700">设置</span>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center text-xs text-gray-600">
+        <a href="home.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-home text-gray-400 text-lg mb-1"></i>
+            <span>首页</span>
+        </a>
+        <a href="search.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-car text-gray-400 text-lg mb-1"></i>
+            <span>租车</span>
+        </a>
+        <a href="marketing.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-gift text-gray-400 text-lg mb-1"></i>
+            <span>活动</span>
+        </a>
+        <a href="user-center.html" class="flex flex-col items-center py-2 px-3">
+            <i class="fas fa-user text-orange-500 text-lg mb-1"></i>
+            <span class="text-orange-500">我的</span>
+        </a>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <script>
+        // 向父窗口发送消息，更新底部导航栏状态
+        if (window.parent && window.parent !== window) {
+            window.parent.postMessage({
+                action: 'updateBottomNav',
+                activeItem: 'user'
+            }, '*');
+        }
+    </script>
+</body>
+</html> 

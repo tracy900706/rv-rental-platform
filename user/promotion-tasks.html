@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推广任务 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <div class="mr-3" onclick="history.back()">
+            <i class="fas fa-arrow-left text-gray-700"></i>
+        </div>
+        <h1 class="text-base font-medium ml-3">推广任务</h1>
+    </div>
+
+    <!-- 用户推广数据 -->
+    <div class="px-4 pt-4">
+        <div class="bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl p-4 text-white">
+            <div class="flex justify-between items-center mb-4">
+                <div>
+                    <h2 class="text-lg font-bold">我的推广</h2>
+                    <div class="text-sm opacity-80 mt-1">邀请好友，获得更多奖励</div>
+                </div>
+                <a href="#" class="bg-white text-orange-500 text-sm px-3 py-1 rounded-full font-medium">
+                    查看明细
+                </a>
+            </div>
+            <div class="flex justify-between text-center">
+                <div>
+                    <div class="text-xl font-bold">12</div>
+                    <div class="text-xs opacity-80">直推用户</div>
+                </div>
+                <div>
+                    <div class="text-xl font-bold">36</div>
+                    <div class="text-xs opacity-80">团队规模</div>
+                </div>
+                <div>
+                    <div class="text-xl font-bold">¥256.80</div>
+                    <div class="text-xs opacity-80">累计收益</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 推广码 -->
+    <div class="px-4 pt-4">
+        <div class="bg-white rounded-xl p-4 text-center">
+            <div class="mb-3">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://example.com/invite/ABC123" alt="推广二维码" class="w-32 h-32 mx-auto">
+            </div>
+            <div class="text-sm text-gray-600 mb-2">我的邀请码: <span class="font-bold text-orange-500">ABC123</span></div>
+            <div class="flex space-x-3">
+                <button class="flex-1 bg-orange-500 text-white py-2 rounded-lg text-sm font-medium">
+                    <i class="fas fa-share-alt mr-1"></i> 分享邀请码
+                </button>
+                <button class="flex-1 border border-orange-500 text-orange-500 py-2 rounded-lg text-sm font-medium">
+                    <i class="fas fa-copy mr-1"></i> 复制链接
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 任务类型标签栏 -->
+    <div class="px-4 pt-4">
+        <div class="bg-white rounded-xl p-2">
+            <div class="flex text-sm text-center text-gray-600 font-medium">
+                <div class="flex-1 py-2 px-1 rounded-lg bg-orange-50 text-orange-500" onclick="showContent('new-retail')">爆品新零售</div>
+                <div class="flex-1 py-2 px-1" onclick="showContent('distributor')">经销商分红</div>
+                <div class="flex-1 py-2 px-1" onclick="showContent('shareholder')">股东分红</div>
+                <div class="flex-1 py-2 px-1" onclick="showContent('regional')">区域奖励</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 推广任务内容区域 -->
+    <div class="px-4 pt-4">
+        <!-- 爆品新零售 -->
+        <div id="new-retail" class="task-content">
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-center mb-3">
+                    <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-fire text-orange-500"></i>
+                    </div>
+                    <h3 class="text-base font-bold">爆品新零售</h3>
+                </div>
+                
+                <div class="text-sm text-gray-700 leading-relaxed">
+                    <p class="mb-2">采用二级分销模式，让推广更有价值！</p>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                        <div class="font-medium text-orange-500 mb-1">一级分销</div>
+                        <p class="text-gray-600">当您推荐好友在平台进行下单，您将获得订单金额的<span class="text-orange-500 font-medium">5%</span>作为奖励。</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="font-medium text-orange-500 mb-1">二级分销</div>
+                        <p class="text-gray-600">您推荐的好友再推荐他人下单，您将额外获得订单金额<span class="text-orange-500 font-medium">2%</span>的见推奖励。</p>
+                    </div>
+                    
+                    <div class="mt-4 flex">
+                        <a href="#" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-center flex-1 text-sm">
+                            立即参与
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 经销商分红 -->
+        <div id="distributor" class="task-content hidden">
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-center mb-3">
+                    <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-users text-green-500"></i>
+                    </div>
+                    <h3 class="text-base font-bold">经销商分红</h3>
+                </div>
+                
+                <div class="text-sm text-gray-700 leading-relaxed">
+                    <p class="mb-2">升级为经销商，享受团队收益和平级奖励！</p>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                        <div class="font-medium text-orange-500 mb-1">团队奖励</div>
+                        <p class="text-gray-600">升级到指定身份后，可获得团队总体收益的奖励。不同等级享受不同比例：</p>
+                        <ul class="list-disc list-inside mt-1 text-gray-600">
+                            <li>初级经销商：团队收益的<span class="text-orange-500 font-medium">3%</span></li>
+                            <li>中级经销商：团队收益的<span class="text-orange-500 font-medium">5%</span></li>
+                            <li>高级经销商：团队收益的<span class="text-orange-500 font-medium">8%</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="font-medium text-orange-500 mb-1">平级奖励</div>
+                        <p class="text-gray-600">当您直推的用户也升级为经销商，您将获得其个人收益的<span class="text-orange-500 font-medium">10%</span>作为平级奖励！</p>
+                    </div>
+                    
+                    <div class="mt-4 flex">
+                        <a href="#" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-center flex-1 text-sm">
+                            申请经销商
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 股东分红 -->
+        <div id="shareholder" class="task-content hidden">
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-center mb-3">
+                    <div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-crown text-yellow-500"></i>
+                    </div>
+                    <h3 class="text-base font-bold">股东分红</h3>
+                </div>
+                
+                <div class="text-sm text-gray-700 leading-relaxed">
+                    <p class="mb-2">成为平台股东，坐享平台每日分红！</p>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                        <div class="font-medium text-orange-500 mb-1">股东特权</div>
+                        <p class="text-gray-600">成为股东后，您将获得以下特权：</p>
+                        <ul class="list-disc list-inside mt-1 text-gray-600">
+                            <li>每日分红：平台拿出昨日营业额的<span class="text-orange-500 font-medium">3%</span>作为股东分红</li>
+                            <li>VIP客服：专属客服一对一服务</li>
+                            <li>优先活动：优先参与平台各类活动</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="font-medium text-orange-500 mb-1">成为股东</div>
+                        <p class="text-gray-600">您可以通过以下方式成为股东：</p>
+                        <ul class="list-disc list-inside mt-1 text-gray-600">
+                            <li>完成推广任务：直推30名用户并产生订单</li>
+                            <li>一次性消费：单笔订单金额超过¥5000</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 flex">
+                        <a href="#" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-center flex-1 text-sm">
+                            了解更多
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 区域奖励 -->
+        <div id="regional" class="task-content hidden">
+            <div class="bg-white rounded-xl p-4">
+                <div class="flex items-center mb-3">
+                    <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-3">
+                        <i class="fas fa-map-marked-alt text-purple-500"></i>
+                    </div>
+                    <h3 class="text-base font-bold">区域奖励</h3>
+                </div>
+                
+                <div class="text-sm text-gray-700 leading-relaxed">
+                    <p class="mb-2">成为区域代理，区域内订单均可获得分红！</p>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                        <div class="font-medium text-orange-500 mb-1">省级代理</div>
+                        <p class="text-gray-600">成为省级代理后，省内所有订单您将获得<span class="text-orange-500 font-medium">1%</span>的分红。</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg mb-3">
+                        <div class="font-medium text-orange-500 mb-1">市级代理</div>
+                        <p class="text-gray-600">成为市级代理后，市内所有订单您将获得<span class="text-orange-500 font-medium">2%</span>的分红。</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="font-medium text-orange-500 mb-1">区/县代理</div>
+                        <p class="text-gray-600">成为区/县代理后，区内所有订单您将获得<span class="text-orange-500 font-medium">3%</span>的分红。</p>
+                    </div>
+                    
+                    <div class="mt-4 flex">
+                        <a href="#" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-center flex-1 text-sm">
+                            申请代理
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 更多推广方式 -->
+    <div class="px-4 pt-4 pb-20">
+        <div class="bg-white rounded-xl p-4">
+            <h3 class="text-base font-bold mb-3">更多推广方式</h3>
+            
+            <div class="space-y-4">
+                <!-- 新电商推广 -->
+                <div class="border border-gray-100 rounded-lg p-3 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-shopping-bag text-orange-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">新电商推广</div>
+                            <div class="text-xs text-gray-500 mt-1">直推奖励+见点奖励+平级奖励</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 拼团活动 -->
+                <div class="border border-gray-100 rounded-lg p-3 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-users text-green-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">拼团活动</div>
+                            <div class="text-xs text-gray-500 mt-1">5人拼团，100%返现+奖励</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+                
+                <!-- 推三返一 -->
+                <div class="border border-gray-100 rounded-lg p-3 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mr-3">
+                            <i class="fas fa-gift text-orange-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">推三返一</div>
+                            <div class="text-xs text-gray-500 mt-1">推荐3人购买，第3人70%奖励</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right text-gray-400"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script>
+        function showContent(id) {
+            // 隐藏所有内容区域
+            document.querySelectorAll('.task-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // 显示选中的内容区域
+            document.getElementById(id).classList.remove('hidden');
+            
+            // 更新标签样式
+            document.querySelectorAll('.flex.text-sm.text-center.text-gray-600.font-medium > div').forEach(el => {
+                el.classList.remove('bg-orange-50', 'text-orange-500');
+            });
+            
+            // 设置选中标签样式
+            event.target.classList.add('bg-orange-50', 'text-orange-500');
+        }
+    </script>
+</body>
+</html> 

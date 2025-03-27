@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房车租赁平台原型</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .device-frame {
+            position: relative;
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            background-color: #1a1a1a;
+            padding: 10px;
+        }
+        .device-screen {
+            position: relative;
+            overflow: hidden;
+            border-radius: 32px;
+            background-color: white;
+            height: 750px;
+        }
+        .device-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 30px;
+            background-color: #1a1a1a;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+        /* 状态栏样式 */
+        .device-status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 44px;
+            background-color: white;
+            z-index: 9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 16px;
+            font-size: 14px;
+        }
+        .device-status-bar .time {
+            position: absolute;
+            left: 16px;
+            font-weight: 500;
+        }
+        .device-status-bar .icons {
+            position: absolute;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .iframe-container {
+            position: absolute;
+            top: 44px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .entrance-btn {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .entrance-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .active-btn {
+            border-color: currentColor;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .bottom-nav {
+            display: none; /* 默认隐藏导航栏 */
+            position: absolute; /* 改为absolute，这样就只在iframe容器内定位 */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-top: 1px solid #eee;
+            padding: 8px 0;
+            justify-content: space-around;
+            z-index: 50;
+        }
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #888;
+            font-size: 12px;
+            padding: 4px 0;
+            text-decoration: none;
+        }
+        .bottom-nav a i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        .bottom-nav a.active {
+            color: #f97316; /* 默认橙色 */
+        }
+        #storeBottomNav a.active {
+            color: #22c55e; /* 门店端使用绿色 */
+        }
+        /* 主页面显示导航栏的逻辑改为通过JavaScript控制 */
+        /* 修改滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
+        }
+        /* 状态栏样式 */
+        body .status-bar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 44px !important;
+            background-color: white !important;
+            z-index: 1000 !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 0 16px !important;
+            font-size: 14px !important;
+        }
+        body .status-bar .status-bar-time {
+            font-weight: 500 !important;
+            position: absolute !important;
+            left: 16px !important;
+        }
+        body .status-bar .status-bar-icons {
+            position: absolute !important;
+            right: 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 4px !important;
+        }
+        /* 页面内容向下移动 */
+        .page-content {
+            padding-top: 44px;
+        }
+        /* 统一页面标题样式 */
+        .page-title {
+            font-size: 17px;
+            font-weight: 500;
+            text-align: left;
+            padding-left: 4px;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center p-6">
+    <!-- 项目标题 -->
+    <div class="mb-10 text-center">
+        <h1 class="text-4xl font-bold text-gray-800 mb-2">房车租赁平台原型</h1>
+        <p class="text-gray-600 max-w-md mx-auto">用于演示的高保真原型，展示完整的用户体验和功能设计</p>
+    </div>
+
+    <!-- 切换按钮 -->
+    <div class="flex justify-center gap-6 mb-10">
+        <button id="userBtn" class="entrance-btn flex flex-col items-center px-8 py-6 bg-white rounded-2xl shadow-md border-2 border-transparent text-orange-600 active-btn">
+            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-3">
+                <i class="fas fa-user text-orange-600 text-2xl"></i>
+            </div>
+            <span class="text-lg font-medium">用户端</span>
+            <span class="text-sm text-gray-500">浏览、预订房车</span>
+        </button>
+        
+        <button id="storeBtn" class="entrance-btn flex flex-col items-center px-8 py-6 bg-white rounded-2xl shadow-md border-2 border-transparent text-green-600">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-3">
+                <i class="fas fa-store text-green-600 text-2xl"></i>
+            </div>
+            <span class="text-lg font-medium">门店端</span>
+            <span class="text-sm text-gray-500">管理车辆与订单</span>
+        </button>
+    </div>
+
+    <!-- 设备展示框架 -->
+    <div class="device-frame">
+        <div class="device-notch"></div>
+        <div class="device-screen">
+            <!-- 状态栏 -->
+            <div class="device-status-bar">
+                <div class="time">9:41</div>
+                <div class="icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+            <div class="iframe-container">
+                <iframe id="prototypeFrame" src="user/home.html" frameborder="0" title="原型预览"></iframe>
+            </div>
+            
+            <!-- 用户端底部导航栏 -->
+            <div id="userBottomNav" class="bottom-nav">
+                <a href="#" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-car"></i>
+                    <span>租车</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-gift"></i>
+                    <span>活动</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span>我的</span>
+                </a>
+            </div>
+            
+            <!-- 门店端底部导航栏 -->
+            <div id="storeBottomNav" class="bottom-nav" style="display: none;">
+                <a href="#" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>首页</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>订单</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-car"></i>
+                    <span>车辆</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>统计</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚版权信息 -->
+    <div class="mt-10 text-center text-gray-500 text-sm">
+        <p>© 2025 房车租赁平台 | 高保真原型展示</p>
+    </div>
+
+    <!-- 简单的交互脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userBtn = document.getElementById('userBtn');
+            const storeBtn = document.getElementById('storeBtn');
+            const prototypeFrame = document.getElementById('prototypeFrame');
+            const userBottomNav = document.getElementById('userBottomNav');
+            const storeBottomNav = document.getElementById('storeBottomNav');
+            
+            // 监听iframe加载完成事件
+            prototypeFrame.addEventListener('load', function() {
+                const currentPath = prototypeFrame.contentWindow.location.pathname;
+                
+                // 重置导航栏显示状态
+                userBottomNav.style.display = 'none';
+                storeBottomNav.style.display = 'none';
+                
+                // 用户端主页面
+                if (currentPath.includes('/user/')) {
+                    const userMainPages = [
+                        '/user/home.html',
+                        '/user/search.html',
+                        '/user/marketing.html',
+                        '/user/user-center.html'
+                    ];
+                    if (userMainPages.some(page => currentPath.endsWith(page))) {
+                        userBottomNav.style.display = 'flex';
+                    }
+                }
+                // 门店端主页面
+                else if (currentPath.includes('/store/')) {
+                    const storeMainPages = [
+                        '/store/store-home.html',
+                        '/store/store-orders.html',
+                        '/store/store-vehicles.html',
+                        '/store/store-statistics.html'
+                    ];
+                    if (storeMainPages.some(page => currentPath.endsWith(page))) {
+                        storeBottomNav.style.display = 'flex';
+                    }
+                }
+
+                // 监听来自 iframe 的消息
+                const handleMessage = function(event) {
+                    if (event.data && event.data.action === 'hideBottomNav') {
+                        userBottomNav.style.display = 'none';
+                        storeBottomNav.style.display = 'none';
+                    }
+                };
+
+                // 移除旧的消息监听器（如果有）
+                window.removeEventListener('message', handleMessage);
+                // 添加新的消息监听器
+                window.addEventListener('message', handleMessage);
+            });
+            
+            userBtn.addEventListener('click', function() {
+                prototypeFrame.src = 'user/home.html';
+                userBtn.classList.add('active-btn');
+                storeBtn.classList.remove('active-btn');
+                // 不在这里设置导航栏显示，而是等待 iframe 加载完成后再决定是否显示
+                storeBottomNav.style.display = 'none';
+                updateUserNavActive('home');
+            });
+            
+            storeBtn.addEventListener('click', function() {
+                prototypeFrame.src = 'store/store-home.html';
+                storeBtn.classList.add('active-btn');
+                userBtn.classList.remove('active-btn');
+                // 不在这里设置导航栏显示，而是等待 iframe 加载完成后再决定是否显示
+                userBottomNav.style.display = 'none';
+                updateStoreNavActive('home');
+            });
+            
+            // 底部导航点击事件
+            const userNavLinks = userBottomNav.querySelectorAll('a');
+            userNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const index = Array.from(userNavLinks).indexOf(this);
+                    
+                    // 更新导航样式
+                    userNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 基于索引加载对应页面
+                    if (index === 0) {
+                        prototypeFrame.src = 'user/home.html';
+                    } else if (index === 1) {
+                        prototypeFrame.src = 'user/search.html';
+                    } else if (index === 2) {
+                        prototypeFrame.src = 'user/marketing.html';
+                    } else if (index === 3) {
+                        prototypeFrame.src = 'user/user-center.html';
+                    }
+                });
+            });
+            
+            const storeNavLinks = storeBottomNav.querySelectorAll('a');
+            storeNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const index = Array.from(storeNavLinks).indexOf(this);
+                    
+                    // 更新导航样式
+                    storeNavLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // 基于索引加载对应页面
+                    if (index === 0) {
+                        prototypeFrame.src = 'store/store-home.html';
+                    } else if (index === 1) {
+                        prototypeFrame.src = 'store/store-orders.html';
+                    } else if (index === 2) {
+                        prototypeFrame.src = 'store/store-vehicles.html';
+                    } else if (index === 3) {
+                        prototypeFrame.src = 'store/store-statistics.html';
+                    }
+                });
+            });
+            
+            // 监听iframe中页面发送的消息，更新底部导航栏状态
+            window.addEventListener('message', function(event) {
+                if (event.data && event.data.action === 'updateBottomNav') {
+                    const activeItem = event.data.activeItem;
+                    
+                    if (userBottomNav.style.display === 'flex') {
+                        updateUserNavActive(activeItem);
+                    } else if (storeBottomNav.style.display === 'flex') {
+                        updateStoreNavActive(activeItem);
+                    }
+                }
+            });
+            
+            // 更新用户端底部导航栏状态
+            function updateUserNavActive(activeItem) {
+                const userNavLinks = userBottomNav.querySelectorAll('a');
+                userNavLinks.forEach(link => link.classList.remove('active'));
+                
+                if (activeItem === 'home') {
+                    userNavLinks[0].classList.add('active');
+                } else if (activeItem === 'rental') {
+                    userNavLinks[1].classList.add('active');
+                } else if (activeItem === 'activity') {
+                    userNavLinks[2].classList.add('active');
+                } else if (activeItem === 'user') {
+                    userNavLinks[3].classList.add('active');
+                }
+            }
+            
+            // 更新门店端底部导航栏状态
+            function updateStoreNavActive(activeItem) {
+                const storeNavLinks = storeBottomNav.querySelectorAll('a');
+                storeNavLinks.forEach(link => link.classList.remove('active'));
+                
+                if (activeItem === 'home') {
+                    storeNavLinks[0].classList.add('active');
+                } else if (activeItem === 'orders') {
+                    storeNavLinks[1].classList.add('active');
+                } else if (activeItem === 'vehicles') {
+                    storeNavLinks[2].classList.add('active');
+                } else if (activeItem === 'stats') {
+                    storeNavLinks[3].classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路线详情 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 sticky top-0 z-10 shadow-sm flex items-center">
+        <button onclick="history.back()" class="text-gray-600">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <h1 class="flex-1 text-center text-base font-medium">路线详情</h1>
+        <div class="flex space-x-4">
+            <i class="fas fa-share-alt text-gray-600"></i>
+            <i class="far fa-heart text-gray-600"></i>
+        </div>
+    </div>
+
+    <!-- 封面图 -->
+    <div class="relative h-56 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1488462237308-ecaa28b729d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="路线封面" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div class="absolute bottom-4 left-4 text-white">
+            <h2 class="text-2xl font-bold mb-1">北京-坝上草原3日游</h2>
+            <div class="flex items-center text-sm opacity-90">
+                <i class="fas fa-eye mr-1"></i>
+                <span>2.5万人浏览</span>
+                <span class="mx-2">|</span>
+                <i class="fas fa-heart mr-1"></i>
+                <span>1230人收藏</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 路线信息卡片 -->
+    <div class="bg-white p-4 mb-3">
+        <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="作者头像" class="w-10 h-10 rounded-full mr-3">
+                <div>
+                    <div class="font-medium">探路者旅行</div>
+                    <div class="text-xs text-gray-500">房车旅行达人</div>
+                </div>
+            </div>
+            <button class="px-3 py-1 text-xs border border-orange-500 text-orange-500 rounded-full">关注</button>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-3">
+            <div class="text-xs px-2 py-0.5 bg-orange-100 text-orange-500 rounded-full">草原风光</div>
+            <div class="text-xs px-2 py-0.5 bg-green-100 text-green-500 rounded-full">夏季推荐</div>
+            <div class="text-xs px-2 py-0.5 bg-yellow-100 text-yellow-500 rounded-full">适合摄影</div>
+            <div class="text-xs px-2 py-0.5 bg-purple-100 text-purple-500 rounded-full">亲子游</div>
+        </div>
+        <div class="flex flex-wrap text-sm text-gray-500">
+            <div class="flex items-center mr-4 mb-2">
+                <i class="fas fa-map-marker-alt mr-1 text-red-500"></i>
+                <span>北京 - 承德</span>
+            </div>
+            <div class="flex items-center mr-4 mb-2">
+                <i class="fas fa-calendar-alt mr-1 text-orange-500"></i>
+                <span>3天2晚</span>
+            </div>
+            <div class="flex items-center mr-4 mb-2">
+                <i class="fas fa-road mr-1 text-green-500"></i>
+                <span>约450公里</span>
+            </div>
+            <div class="flex items-center mb-2">
+                <i class="fas fa-gas-pump mr-1 text-orange-500"></i>
+                <span>油费约¥400</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 选项卡导航 -->
+    <div class="bg-white mb-3">
+        <div class="flex border-b">
+            <div class="px-4 py-3 border-b-2 border-orange-500 text-orange-500 font-medium">线路介绍</div>
+            <div class="px-4 py-3 text-gray-500">景点介绍</div>
+            <div class="px-4 py-3 text-gray-500">游记攻略</div>
+            <div class="px-4 py-3 text-gray-500">用户评价</div>
+        </div>
+    </div>
+
+    <!-- 线路介绍 -->
+    <div class="bg-white p-4 mb-3">
+        <h3 class="font-bold text-lg mb-3">线路介绍</h3>
+        <p class="text-gray-700 text-sm leading-relaxed mb-4">
+            坝上草原位于河北承德，被誉为"塞外风光第一台"，是离北京最近的天然大草原。此线路将带您领略辽阔草原美景，体验蒙古族传统文化，享受骑马、射箭、篝火晚会等丰富活动，是周末或小假期的绝佳选择。
+        </p>
+        <p class="text-gray-700 text-sm leading-relaxed mb-4">
+            此路线适合驾驶各类房车，道路状况良好，适合新手驾驶。夏季草原绿草如茵，繁花盛开，是自驾最佳季节；秋季草原一片金黄，别有一番风味。
+        </p>
+        <div class="flex items-center justify-between">
+            <div class="text-sm text-gray-500">更新时间：2023-07-15</div>
+            <button class="text-orange-500 text-sm flex items-center">
+                查看更多 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 行程安排 -->
+    <div class="bg-white p-4 mb-3">
+        <h3 class="font-bold text-lg mb-3">行程安排</h3>
+        
+        <!-- 第一天 -->
+        <div class="relative pb-5">
+            <div class="absolute top-0 bottom-0 left-3.5 w-0.5 bg-gray-200"></div>
+            <div class="flex mb-3">
+                <div class="relative flex items-center justify-center w-7 h-7 bg-orange-500 rounded-full text-white text-xs mr-3 z-10">D1</div>
+                <div class="font-medium">北京 - 木兰围场（约220公里）</div>
+            </div>
+            <div class="ml-10 text-sm text-gray-600 space-y-2">
+                <p><span class="font-medium text-orange-500">08:00</span> 北京出发，走京承高速</p>
+                <p><span class="font-medium text-orange-500">12:00</span> 抵达围场县城，午餐</p>
+                <p><span class="font-medium text-orange-500">14:00</span> 前往坝上草原，入住营地</p>
+                <p><span class="font-medium text-orange-500">15:30</span> 草原骑马、射箭体验</p>
+                <p><span class="font-medium text-orange-500">18:00</span> 营地晚餐</p>
+                <p><span class="font-medium text-orange-500">19:30</span> 参加篝火晚会</p>
+            </div>
+        </div>
+        
+        <!-- 第二天 -->
+        <div class="relative pb-5">
+            <div class="absolute top-0 bottom-0 left-3.5 w-0.5 bg-gray-200"></div>
+            <div class="flex mb-3">
+                <div class="relative flex items-center justify-center w-7 h-7 bg-orange-500 rounded-full text-white text-xs mr-3 z-10">D2</div>
+                <div class="font-medium">木兰围场游览（约100公里）</div>
+            </div>
+            <div class="ml-10 text-sm text-gray-600 space-y-2">
+                <p><span class="font-medium text-orange-500">05:30</span> 观赏草原日出（自愿）</p>
+                <p><span class="font-medium text-orange-500">08:30</span> 营地早餐</p>
+                <p><span class="font-medium text-orange-500">09:30</span> 前往七星湖自然保护区</p>
+                <p><span class="font-medium text-orange-500">12:00</span> 牧民家庭午餐体验</p>
+                <p><span class="font-medium text-orange-500">14:00</span> 探访将军泡景区</p>
+                <p><span class="font-medium text-orange-500">17:00</span> 返回营地，自由活动</p>
+                <p><span class="font-medium text-orange-500">18:30</span> 营地烧烤晚餐</p>
+            </div>
+        </div>
+        
+        <!-- 第三天 -->
+        <div class="relative">
+            <div class="flex mb-3">
+                <div class="relative flex items-center justify-center w-7 h-7 bg-orange-500 rounded-full text-white text-xs mr-3 z-10">D3</div>
+                <div class="font-medium">木兰围场 - 北京（约230公里）</div>
+            </div>
+            <div class="ml-10 text-sm text-gray-600 space-y-2">
+                <p><span class="font-medium text-orange-500">08:00</span> 营地早餐</p>
+                <p><span class="font-medium text-orange-500">09:30</span> 参观御道口牧场</p>
+                <p><span class="font-medium text-orange-500">11:30</span> 午餐，购买当地特产</p>
+                <p><span class="font-medium text-orange-500">13:00</span> 返程北京</p>
+                <p><span class="font-medium text-orange-500">17:00</span> 预计抵达北京</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 沿途景点推荐 -->
+    <div class="bg-white p-4 mb-3">
+        <h3 class="font-bold text-lg mb-3">沿途景点推荐</h3>
+        <div class="overflow-x-auto pb-2 hide-scrollbar">
+            <div class="flex space-x-3">
+                <!-- 景点1 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1623320476925-b0446849c05d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="景点" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">七星湖景区</h4>
+                        <div class="flex items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">4.5分</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">门票：¥60/人</div>
+                    </div>
+                </div>
+                
+                <!-- 景点2 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="景点" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">将军泡景区</h4>
+                        <div class="flex items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">4.0分</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">门票：¥50/人</div>
+                    </div>
+                </div>
+                
+                <!-- 景点3 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1535046460986-716d21586b7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="景点" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">御道口牧场</h4>
+                        <div class="flex items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">5.0分</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">门票：免费</div>
+                    </div>
+                </div>
+                
+                <!-- 景点4 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1500531359996-c89a0e63e49c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="景点" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">塞罕坝国家森林公园</h4>
+                        <div class="flex items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-xs text-gray-500 ml-1">4.7分</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">门票：¥90/人</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 路线点评 -->
+    <div class="bg-white p-4 mb-3">
+        <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-lg">用户点评</h3>
+            <a href="#" class="text-sm text-gray-500 flex items-center">
+                查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+            </a>
+        </div>
+
+        <div class="flex justify-between mb-3">
+            <div class="flex items-center">
+                <div class="text-xl font-bold text-red-500">4.8</div>
+                <div class="ml-2">
+                    <div class="flex text-yellow-400 text-xs">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-0.5">245条点评</div>
+                </div>
+            </div>
+            <div class="flex space-x-1">
+                <div class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">全部</div>
+                <div class="px-2 py-0.5 bg-red-50 text-red-500 text-xs rounded-full">好评(230)</div>
+                <div class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">中评(12)</div>
+                <div class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full">差评(3)</div>
+            </div>
+        </div>
+
+        <!-- 评论列表 -->
+        <div class="space-y-4">
+            <!-- 评论1 -->
+            <div>
+                <div class="flex items-start">
+                    <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="用户头像" class="w-8 h-8 rounded-full mr-2">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium text-sm">李小花</div>
+                            <div class="text-xs text-gray-500">2023-07-10</div>
+                        </div>
+                        <div class="flex text-yellow-400 text-xs mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-700 mt-1">
+                            非常棒的自驾路线，风景如画，营地条件也很好，篝火晚会很热闹，孩子们玩得很开心！非常推荐家庭出游选择这条路线。
+                        </p>
+                        <div class="flex mt-2 space-x-2">
+                            <img src="https://images.unsplash.com/photo-1526491109672-74740652b963?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="用户照片" class="w-16 h-16 object-cover rounded">
+                            <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="用户照片" class="w-16 h-16 object-cover rounded">
+                        </div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-xs text-gray-500">C型房车自驾</div>
+                            <div class="flex items-center">
+                                <i class="far fa-thumbs-up text-gray-400 mr-1"></i>
+                                <span class="text-xs text-gray-500">42</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 评论2 -->
+            <div>
+                <div class="flex items-start">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="用户头像" class="w-8 h-8 rounded-full mr-2">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium text-sm">张先生</div>
+                            <div class="text-xs text-gray-500">2023-06-25</div>
+                        </div>
+                        <div class="flex text-yellow-400 text-xs mt-1">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <p class="text-sm text-gray-700 mt-1">
+                            路线安排合理，景点介绍详细。唯一不足是夏季草原蚊虫较多，建议带好防蚊喷雾。整体体验很好，尤其是七星湖的风景特别美。
+                        </p>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-xs text-gray-500">B型房车自驾</div>
+                            <div class="flex items-center">
+                                <i class="far fa-thumbs-up text-gray-400 mr-1"></i>
+                                <span class="text-xs text-gray-500">28</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 适合房车 -->
+    <div class="bg-white p-4 mb-3">
+        <h3 class="font-bold text-lg mb-3">适合房车</h3>
+        <div class="overflow-x-auto pb-2 hide-scrollbar">
+            <div class="flex space-x-3">
+                <!-- 房车1 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden" onclick="location.href='vehicle-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1588880331179-bc13b2b7293c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">宇通C型房车</h4>
+                        <div class="flex items-center mt-1 text-xs text-gray-500">
+                            <i class="fas fa-user mr-1"></i>
+                            <span>最多4人</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="text-xs text-gray-500">暂无评价</div>
+                            <span class="text-sm text-red-500 font-medium">¥880/天</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 房车2 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden" onclick="location.href='vehicle-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1565361834206-7e3eeef5146e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">大通V90B型房车</h4>
+                        <div class="flex items-center mt-1 text-xs text-gray-500">
+                            <i class="fas fa-user mr-1"></i>
+                            <span>最多2人</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-sm text-red-500 font-medium">¥680/天</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 房车3 -->
+                <div class="bg-white rounded-lg border min-w-[200px] overflow-hidden" onclick="location.href='vehicle-detail.html'">
+                    <img src="https://images.unsplash.com/photo-1514782831304-632d84503f6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="房车" class="w-full h-28 object-cover">
+                    <div class="p-2">
+                        <h4 class="font-medium text-sm">福特A型房车</h4>
+                        <div class="flex items-center mt-1 text-xs text-gray-500">
+                            <i class="fas fa-user mr-1"></i>
+                            <span>最多6人</span>
+                        </div>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-sm text-red-500 font-medium">¥1280/天</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部固定操作栏 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-3 flex items-center justify-between">
+        <div>
+            <button class="mr-4 flex flex-col items-center">
+                <i class="far fa-comment-dots text-xl text-orange-500"></i>
+                <span class="text-xs text-gray-500 mt-1">咨询</span>
+            </button>
+        </div>
+        <div class="flex">
+            <button class="px-4 py-2 bg-orange-100 text-orange-500 font-medium rounded-l-full">集结同行</button>
+            <button class="px-4 py-2 bg-orange-500 text-white font-medium rounded-r-full" onclick="location.href='vehicle-list.html'">选择房车</button>
+        </div>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body>
+</html> 

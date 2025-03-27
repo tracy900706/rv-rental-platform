@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单管理 - 自由房车</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-container {
+            width: 100%;
+            max-width: 375px;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="page-container">
+        <!-- 顶部导航栏 -->
+        <div class="fixed top-0 left-0 right-0 bg-white z-50 border-b">
+            <div class="flex items-center justify-between px-4 h-12">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-gray-500">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <h1 class="ml-3 text-lg font-medium">订单管理</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单状态栏 -->
+        <div class="fixed top-12 left-0 right-0 bg-white z-40 border-b">
+            <div class="flex overflow-x-auto hide-scrollbar">
+                <div class="flex space-x-6 px-4 py-3">
+                    <div class="text-orange-500 font-medium whitespace-nowrap">全部</div>
+                    <div class="text-gray-500 whitespace-nowrap">待接单</div>
+                    <div class="text-gray-500 whitespace-nowrap">已接单</div>
+                    <div class="text-gray-500 whitespace-nowrap">已完成</div>
+                    <div class="text-gray-500 whitespace-nowrap">已取消</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单列表 -->
+        <div class="pt-24 pb-20">
+            <div class="p-4 space-y-4">
+                <!-- 订单卡片1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="房车" class="w-full h-36 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold">豪华A型房车</h3>
+                                <p class="text-sm text-gray-500 mt-1">订单号：2024032701</p>
+                            </div>
+                            <div class="text-orange-500">待接单</div>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <div class="text-red-500 font-bold">¥299/天</div>
+                            <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">接单</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单卡片2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="房车" class="w-full h-36 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold">豪华B型房车</h3>
+                                <p class="text-sm text-gray-500 mt-1">订单号：2024032702</p>
+                            </div>
+                            <div class="text-green-500">已接单</div>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <div class="text-red-500 font-bold">¥399/天</div>
+                            <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单卡片3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="房车" class="w-full h-36 object-cover">
+                    <div class="p-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="font-bold">豪华C型房车</h3>
+                                <p class="text-sm text-gray-500 mt-1">订单号：2024032703</p>
+                            </div>
+                            <div class="text-gray-500">已完成</div>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <div class="text-red-500 font-bold">¥499/天</div>
+                            <button class="px-4 py-1.5 bg-orange-500 text-white rounded-full text-sm">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航栏 -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white border-t">
+            <div class="flex justify-around items-center h-12">
+                <a href="index.html" class="text-gray-500">
+                    <i class="fas fa-home"></i>
+                </a>
+                <a href="orders.html" class="text-orange-500">
+                    <i class="fas fa-list"></i>
+                </a>
+                <a href="settings.html" class="text-gray-500">
+                    <i class="fas fa-cog"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

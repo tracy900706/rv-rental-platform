@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>门店管理 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 页面内容 -->
+    <div class="page-content">
+        <!-- 门店信息卡片 -->
+        <div class="bg-green-600 p-4 text-white">
+            <div class="flex items-center mb-2">
+                <img src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="门店Logo" class="w-12 h-12 rounded-full object-cover border-2 border-white">
+                <div class="ml-3">
+                    <h2 class="font-bold text-lg">北京朝阳区门店</h2>
+                    <div class="flex items-center mt-1 text-sm text-white/90">
+                        <i class="fas fa-map-marker-alt mr-1"></i>
+                        <span>北京市朝阳区建国路88号</span>
+                    </div>
+                </div>
+                <div class="ml-auto px-2 py-1 bg-white/20 rounded text-sm">
+                    运营中
+                </div>
+            </div>
+            <div class="flex items-center justify-between mt-3">
+                <div class="flex items-center">
+                    <i class="fas fa-car mr-1"></i>
+                    <span class="whitespace-nowrap text-sm">车辆总数：25台</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-1"></i>
+                    <span class="whitespace-nowrap text-sm">可租：18台</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-star mr-1"></i>
+                    <span class="whitespace-nowrap text-sm">评分：4.8</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 今日概览 -->
+        <div class="bg-white p-4">
+            <h3 class="text-base font-medium text-gray-900 mb-4">今日概览</h3>
+            <div class="grid grid-cols-4 gap-4">
+                <div class="flex flex-col items-center">
+                    <div class="text-2xl font-bold text-green-600">5</div>
+                    <div class="text-sm text-gray-500 mt-1">新订单</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-2xl font-bold text-green-600">¥6,280</div>
+                    <div class="text-sm text-gray-500 mt-1">今日收入</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-2xl font-bold text-orange-600">3</div>
+                    <div class="text-sm text-gray-500 mt-1">待取车</div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="text-2xl font-bold text-purple-600">2</div>
+                    <div class="text-sm text-gray-500 mt-1">待还车</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 业务快捷入口 -->
+        <div class="grid grid-cols-4 gap-4 m-4">
+            <a href="store-orders.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-clipboard-list text-green-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">订单管理</div>
+            </a>
+            <a href="store-vehicles.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-car text-green-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">车辆管理</div>
+            </a>
+            <a href="store-activities.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-bullhorn text-red-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">活动管理</div>
+            </a>
+            <a href="store-statistics.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-chart-line text-purple-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">数据统计</div>
+            </a>
+            <a href="store-routes.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-yellow-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-route text-yellow-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">路线管理</div>
+            </a>
+            <a href="store-settings.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-cog text-gray-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">门店设置</div>
+            </a>
+            <a href="store-promotion-tools.html" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-share-alt text-indigo-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">推广工具</div>
+            </a>
+            <a href="#" class="bg-white rounded-lg flex flex-col items-center justify-center p-3 shadow-sm">
+                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mb-1">
+                    <i class="fas fa-users text-green-600"></i>
+                </div>
+                <div class="text-xs text-gray-700 whitespace-nowrap">客户管理</div>
+            </a>
+        </div>
+
+        <!-- 待处理事项 -->
+        <div class="m-4 bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="px-4 py-3 border-b border-gray-100 flex justify-between items-center">
+                <h3 class="font-medium text-gray-700">待处理事项</h3>
+                <a href="#" class="text-sm text-green-500">查看全部</a>
+            </div>
+            <div class="divide-y">
+                <div class="p-4 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-car text-orange-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">今日取车 - 豪华C型房车</div>
+                            <div class="text-xs text-gray-500 mt-0.5">王先生 10:30 取车</div>
+                        </div>
+                    </div>
+                    <button class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">处理</button>
+                </div>
+                <div class="p-4 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-car text-green-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">今日还车 - 精巧B型房车</div>
+                            <div class="text-xs text-gray-500 mt-0.5">李女士 14:00 还车</div>
+                        </div>
+                    </div>
+                    <button class="px-3 py-1 bg-green-500 text-white text-sm rounded-full">处理</button>
+                </div>
+                <div class="p-4 flex justify-between items-center">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center mr-3">
+                            <i class="fas fa-exclamation-triangle text-red-500"></i>
+                        </div>
+                        <div>
+                            <div class="font-medium">B8车辆保养提醒</div>
+                            <div class="text-xs text-gray-500 mt-0.5">距上次保养已行驶9800公里</div>
+                        </div>
+                    </div>
+                    <button class="px-3 py-1 bg-red-500 text-white text-sm rounded-full">紧急</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 销售数据图表 -->
+        <div class="m-4 p-4 bg-white rounded-lg shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-medium text-gray-700">本月销售数据</h3>
+                <div class="text-sm text-gray-500">
+                    <span class="text-green-500 font-medium">¥128,500</span> / ¥150,000
+                </div>
+            </div>
+            <!-- 模拟进度条 -->
+            <div class="h-3 bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-green-500 rounded-full" style="width: 85%"></div>
+            </div>
+            <div class="flex justify-between text-xs text-gray-500 mt-1">
+                <span>本月目标完成率: 85%</span>
+                <span>剩余15天</span>
+            </div>
+            
+            <!-- 销售数据图表 -->
+            <div class="mt-6 h-60">
+                <canvas id="salesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t flex items-center justify-around py-2">
+        <a href="store-home.html" class="flex flex-col items-center px-3 py-1 text-green-500">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">首页</span>
+        </a>
+        <a href="store-orders.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-clipboard-list text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">订单</span>
+        </a>
+        <a href="store-vehicles.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-car text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">车辆</span>
+        </a>
+        <a href="store-statistics.html" class="flex flex-col items-center px-3 py-1 text-gray-600">
+            <i class="fas fa-chart-bar text-lg"></i>
+            <span class="text-xs mt-1 whitespace-nowrap">数据</span>
+        </a>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    
+    <!-- 图表初始化 -->
+    <script>
+        // 销售数据图表
+        const salesCtx = document.getElementById('salesChart').getContext('2d');
+        const salesChart = new Chart(salesCtx, {
+            type: 'bar',
+            data: {
+                labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+                datasets: [{
+                    label: '日销售额',
+                    data: [12800, 15600, 13200, 10500, 14200, 18500, 17800],
+                    backgroundColor: 'rgba(34, 197, 94, 0.5)',
+                    borderColor: 'rgb(34, 197, 94)',
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    maxBarThickness: 20
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            display: true,
+                            color: 'rgba(0, 0, 0, 0.1)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '¥' + value.toLocaleString();
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html> 

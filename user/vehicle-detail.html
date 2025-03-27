@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车辆详情 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 页面内容 -->
+    <div class="page-content">
+        <!-- 顶部标题栏 -->
+        <div class="bg-white px-4 py-3 flex items-center">
+            <button class="text-gray-600" onclick="history.back()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1 class="text-base font-medium ml-3">车辆详情</h1>
+            <div class="w-8"></div>
+        </div>
+
+        <!-- 车辆轮播图 -->
+        <div class="relative">
+            <!-- 轮播图 -->
+            <div class="relative h-64 overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="房车图片" class="w-full h-full object-cover">
+                <!-- 轮播指示器 -->
+                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                    <div class="w-2 h-2 rounded-full bg-white opacity-100"></div>
+                    <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+                    <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+                    <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+                    <div class="w-2 h-2 rounded-full bg-white opacity-60"></div>
+                </div>
+            </div>
+            <!-- 车辆基础信息卡片 -->
+            <div class="bg-white rounded-t-xl p-4 relative -mt-5">
+                <h2 class="text-xl font-bold">豪华C型房车</h2>
+                <div class="flex items-center mt-1">
+                    <div class="flex items-center text-yellow-400 text-sm">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span class="text-gray-500 ml-1">4.5分 (125条评价)</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <div class="text-center">
+                        <div class="text-orange-500 text-2xl"><i class="fas fa-users"></i></div>
+                        <div class="text-sm font-medium mt-1">宜住4人</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-orange-500 text-2xl"><i class="fas fa-bed"></i></div>
+                        <div class="text-sm font-medium mt-1">2张床</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-orange-500 text-2xl"><i class="fas fa-car"></i></div>
+                        <div class="text-sm font-medium mt-1">C照可驾</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 门店信息 -->
+        <div class="bg-white mt-2 p-4">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" alt="门店Logo" class="w-12 h-12 rounded-full object-cover">
+                <div class="ml-3 flex-1">
+                    <h3 class="font-bold">自由房车租赁 · 北京旗舰店</h3>
+                    <div class="flex items-center mt-1 text-sm text-gray-500">
+                        <i class="fas fa-map-marker-alt mr-1 text-red-500"></i>
+                        <span>北京市房山区长阳镇绿地启航国际 3号楼</span>
+                    </div>
+                </div>
+                <div class="ml-2">
+                    <i class="fas fa-phone text-orange-500"></i>
+                </div>
+            </div>
+            <div class="flex space-x-3 mt-4">
+                <div class="flex-1">
+                    <button class="w-full bg-orange-50 text-orange-500 py-2 rounded-lg text-sm font-medium">查看门店</button>
+                </div>
+                <div class="flex-1">
+                    <button class="w-full bg-orange-50 text-orange-500 py-2 rounded-lg text-sm font-medium">导航前往</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 费用说明 -->
+        <div class="bg-white mt-2 p-4">
+            <h3 class="font-bold mb-3">费用说明</h3>
+            <div class="flex justify-between items-center py-2 border-b">
+                <div class="flex items-center">
+                    <span class="text-sm">基础租金</span>
+                    <i class="fas fa-question-circle text-gray-400 ml-1 text-xs"></i>
+                </div>
+                <div class="text-red-500 font-bold">¥899/天</div>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b">
+                <div class="flex items-center">
+                    <span class="text-sm">车辆押金</span>
+                    <i class="fas fa-question-circle text-gray-400 ml-1 text-xs"></i>
+                </div>
+                <div>¥5000</div>
+            </div>
+            <div class="flex justify-between items-center py-2 border-b">
+                <div class="flex items-center">
+                    <span class="text-sm">异地还车费</span>
+                    <i class="fas fa-question-circle text-gray-400 ml-1 text-xs"></i>
+                </div>
+                <div class="text-green-500">支持 (另收费)</div>
+            </div>
+            <div class="flex justify-between items-center py-2">
+                <div class="flex items-center">
+                    <span class="text-sm">长租优惠</span>
+                    <i class="fas fa-question-circle text-gray-400 ml-1 text-xs"></i>
+                </div>
+                <div class="text-orange-500">7天9.5折, 15天9折, 30天8折</div>
+            </div>
+        </div>
+
+        <!-- 房车设施 -->
+        <div class="bg-white mt-2 p-4">
+            <h3 class="font-bold mb-3">房车设施</h3>
+            <div class="grid grid-cols-4 gap-y-4">
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-tv text-orange-500"></i>
+                    <span class="text-xs mt-1">电视</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-wind text-orange-500"></i>
+                    <span class="text-xs mt-1">空调</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-shower text-orange-500"></i>
+                    <span class="text-xs mt-1">淋浴</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-toilet text-orange-500"></i>
+                    <span class="text-xs mt-1">马桶</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-fire text-orange-500"></i>
+                    <span class="text-xs mt-1">炉灶</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-utensils text-orange-500"></i>
+                    <span class="text-xs mt-1">餐具</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-snowflake text-orange-500"></i>
+                    <span class="text-xs mt-1">冰箱</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <i class="fas fa-wifi text-orange-500"></i>
+                    <span class="text-xs mt-1">WiFi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 车辆详情 -->
+        <div class="bg-white mt-2 p-4">
+            <h3 class="font-bold mb-3">车辆介绍</h3>
+            <div class="text-sm text-gray-600 leading-relaxed">
+                <p>这款豪华C型房车采用美国进口底盘，配备6.8L V10汽油发动机，动力强劲。车内配备了完善的生活设施，包括厨房、卫生间、淋浴、电视、空调等，让您在旅途中享受家一般的舒适。</p>
+                <p class="mt-2">车辆长度8.5米，宽2.5米，高3.2米，拥有宽敞的内部空间，共有4个床位。车辆配备自动挡变速箱，操控简单，C照即可驾驶。</p>
+                <p class="mt-2">本车适合家庭出游、朋友聚会、情侣旅行等多种场景使用，带给您与众不同的旅行体验！</p>
+            </div>
+        </div>
+
+        <!-- 用户评价 -->
+        <div class="bg-white mt-2 p-4">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold">用户评价</h3>
+                <a href="#" class="text-sm text-gray-500 flex items-center">
+                    查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <!-- 评分概览 -->
+            <div class="flex items-center mb-3">
+                <div class="text-3xl font-bold text-yellow-500">4.5</div>
+                <div class="ml-2">
+                    <div class="flex text-yellow-400 text-sm">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="text-xs text-gray-500 mt-1">125人评价</div>
+                </div>
+            </div>
+            <!-- 评价列表 -->
+            <div class="space-y-4">
+                <!-- 评价1 -->
+                <div class="review-card">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                        <div class="ml-3">
+                            <div class="font-medium">张先生</div>
+                            <div class="flex text-yellow-400 text-xs mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-sm text-gray-600">
+                        房车很新，内部设施齐全，床很舒适，空调制冷效果好。第一次开房车有点紧张，但其实和普通车差不多，很容易上手。服务也很周到，押金退还速度快。
+                    </div>
+                    <div class="mt-2 text-xs text-gray-400">2023-06-10</div>
+                </div>
+                
+                <!-- 评价2 -->
+                <div class="review-card">
+                    <div class="flex items-center">
+                        <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=80&q=80" alt="用户头像" class="w-10 h-10 rounded-full object-cover">
+                        <div class="ml-3">
+                            <div class="font-medium">李女士</div>
+                            <div class="flex text-yellow-400 text-xs mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-sm text-gray-600">
+                        带全家去青海玩了一周，大家都很满意。房车内部空间够大，可以容纳我们一家四口。冰箱、灶台、淋浴都能正常使用。唯一的小问题是WiFi信号不太稳定，其他都很好。
+                    </div>
+                    <div class="mt-2 text-xs text-gray-400">2023-05-28</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 推荐游玩路线 -->
+        <div class="bg-white mt-2 p-4 mb-24">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold">推荐路线</h3>
+                <a href="travel-routes.html" class="text-sm text-gray-500 flex items-center">
+                    查看全部 <i class="fas fa-chevron-right ml-1 text-xs"></i>
+                </a>
+            </div>
+            <div class="flex space-x-3 overflow-x-auto pb-2 hide-scrollbar">
+                <!-- 路线卡片1 -->
+                <div class="route-card min-w-[250px]">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="路线" class="route-image">
+                    <div class="p-3">
+                        <h4 class="font-bold">北京-坝上草原3日游</h4>
+                        <div class="flex items-center mt-1 text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-1 text-red-500"></i>
+                            <span>北京 - 承德</span>
+                            <span class="mx-2">|</span>
+                            <i class="fas fa-calendar-alt mr-1 text-orange-500"></i>
+                            <span>3天2晚</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">探访辽阔草原，领略塞外风光，体验蒙古族传统文化...</p>
+                    </div>
+                </div>
+                
+                <!-- 路线卡片2 -->
+                <div class="route-card min-w-[250px]">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="路线" class="route-image">
+                    <div class="p-3">
+                        <h4 class="font-bold">青海湖环线5日游</h4>
+                        <div class="flex items-center mt-1 text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt mr-1 text-red-500"></i>
+                            <span>西宁 - 青海湖</span>
+                            <span class="mx-2">|</span>
+                            <i class="fas fa-calendar-alt mr-1 text-orange-500"></i>
+                            <span>5天4晚</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2 line-clamp-2">在青海湖畔泡茶赏日出，穿过茶卡盐湖奇观...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部固定操作栏 -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white border-t p-3 flex items-center justify-between">
+            <div>
+                <div class="text-red-500 font-bold text-lg">¥899<span class="text-xs text-gray-500">/天</span></div>
+                <div class="text-xs text-gray-400 line-through">原价: ¥1099/天</div>
+            </div>
+            <div class="flex space-x-3">
+                <button class="bg-orange-100 text-orange-500 px-4 py-2 rounded-full font-medium">咨询客服</button>
+                <button class="bg-orange-500 text-white px-6 py-2 rounded-full font-medium" onclick="goToOrderFlow()">立即预订</button>
+            </div>
+        </div>
+
+        <!-- 在页面底部添加下单按钮 -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 flex justify-center">
+            <button onclick="goToOrderFlow()" class="bg-orange-500 text-white px-6 py-2 rounded-lg shadow-md hover:bg-orange-600">
+                立即下单
+            </button>
+        </div>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="../js/main.js"></script>
+    <style>
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
+
+    <script>
+        function goToOrderFlow() {
+            // 获取当前车型信息
+            const vehicleName = document.querySelector('h1').textContent;
+            const priceElement = document.querySelector('.text-red-500.font-bold');
+            const vehiclePrice = priceElement.textContent.split('¥')[1].split('/')[0];
+            
+            // 获取门店地址
+            const storeAddress = document.querySelector('.text-gray-500 span').textContent;
+            
+            // 获取当前时间作为默认取车时间
+            const now = new Date();
+            const pickupDate = now.toISOString().split('T')[0];
+            // 默认还车时间为取车时间加3天
+            const returnDate = new Date(now.setDate(now.getDate() + 3)).toISOString().split('T')[0];
+            
+            // 构建URL参数
+            const params = new URLSearchParams({
+                vehicle: vehicleName,
+                price: vehiclePrice,
+                pickupDate: pickupDate,
+                returnDate: returnDate,
+                pickupLocation: storeAddress,
+                returnLocation: storeAddress
+            });
+            
+            // 跳转到订单流程页面
+            window.location.href = 'order-flow.html?' + params.toString();
+        }
+    </script>
+</body>
+</html> 

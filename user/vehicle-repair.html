@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房车维修 - 房车租赁平台</title>
+    <!-- 引入Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 配置Tailwind颜色，将蓝色重定向为橙色 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        blue: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            200: '#fed7aa',
+                            300: '#fdba74',
+                            400: '#fb923c',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            700: '#c2410c',
+                            800: '#9a3412',
+                            900: '#7c2d12'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- 引入FontAwesome图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="../css/custom.css">
+    <style>
+        /* 标签样式 */
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .tag-orange {
+            background-color: rgba(249, 115, 22, 0.1);
+            color: rgb(249, 115, 22);
+        }
+        .tag-green {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: rgb(16, 185, 129);
+        }
+        .tag-red {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: rgb(239, 68, 68);
+        }
+        /* 输入框样式 */
+        .input-field {
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+        .select-field {
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 14px;
+            background-color: white;
+        }
+        /* 隐藏滚动条但保留滚动功能 */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 pb-16">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white sticky top-0 z-10 shadow-sm">
+        <div class="flex items-center p-4">
+            <button class="text-gray-600" onclick="history.back()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1 class="flex-1 text-base font-medium ml-3">房车维修</h1>
+            <button class="text-gray-600">
+                <i class="fas fa-headset"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 当前位置 -->
+    <div class="bg-white p-4 mt-2 flex items-center justify-between">
+        <div class="flex items-center">
+            <i class="fas fa-map-marker-alt text-orange-500 mr-2"></i>
+            <span>当前位置：北京市海淀区</span>
+        </div>
+        <button class="text-orange-500 flex items-center text-sm">
+            <i class="fas fa-sync-alt mr-1"></i>
+            刷新
+        </button>
+    </div>
+
+    <!-- 维修/保养按钮 -->
+    <div class="bg-white p-4 mt-2">
+        <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold flex items-center justify-center">
+            <i class="fas fa-tools mr-2"></i>
+            我要维修/保养
+        </button>
+    </div>
+
+    <!-- 维修点列表标题 -->
+    <div class="bg-white p-4 mt-2 flex justify-between items-center">
+        <h3 class="text-lg font-semibold">附近维修服务点</h3>
+        <div class="flex items-center text-sm text-gray-500">
+            <span class="mr-2">筛选</span>
+            <i class="fas fa-filter"></i>
+        </div>
+    </div>
+
+    <!-- 维修店铺列表 -->
+    <div class="mt-2 bg-white">
+        <!-- 维修店铺1 -->
+        <div class="border-b p-4">
+            <div class="flex items-start">
+                <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-3 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="维修店铺" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">北方房车维修中心</h4>
+                        <span class="text-xs bg-orange-100 text-orange-600 px-2 py-1 rounded">官方认证</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 ml-1">4.8分</span>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <span class="text-gray-500">月售 128 单</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
+                            <span>距离您 3.2km</span>
+                        </div>
+                        <button class="bg-orange-500 text-white text-sm px-4 py-1 rounded-full">
+                            联系
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-sm">
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag tag-orange">全车检测</span>
+                    <span class="tag tag-orange">底盘维修</span>
+                    <span class="tag tag-orange">电路检修</span>
+                    <span class="tag tag-orange">定期保养</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 维修店铺2 -->
+        <div class="border-b p-4">
+            <div class="flex items-start">
+                <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-3 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="维修店铺" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">金牌房车服务站</h4>
+                        <span class="text-xs bg-yellow-100 text-yellow-600 px-2 py-1 rounded">金牌服务</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 ml-1">5.0分</span>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <span class="text-gray-500">月售 86 单</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
+                            <span>距离您 5.1km</span>
+                        </div>
+                        <button class="bg-orange-500 text-white text-sm px-4 py-1 rounded-full">
+                            联系
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-sm">
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag tag-orange">水电维修</span>
+                    <span class="tag tag-orange">外观修复</span>
+                    <span class="tag tag-orange">内饰保养</span>
+                    <span class="tag tag-green">首次免费检测</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 维修店铺3 -->
+        <div class="border-b p-4">
+            <div class="flex items-start">
+                <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-3 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="维修店铺" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">快捷房车维修</h4>
+                        <span class="text-xs bg-red-100 text-red-600 px-2 py-1 rounded">优惠中</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <span class="text-gray-500 ml-1">4.2分</span>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <span class="text-gray-500">月售 62 单</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
+                            <span>距离您 4.5km</span>
+                        </div>
+                        <button class="bg-orange-500 text-white text-sm px-4 py-1 rounded-full">
+                            联系
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-sm">
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag tag-orange">快速保养</span>
+                    <span class="tag tag-orange">零件更换</span>
+                    <span class="tag tag-red">周年庆8折</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 维修店铺4 -->
+        <div class="p-4">
+            <div class="flex items-start">
+                <div class="w-16 h-16 bg-gray-200 rounded-lg overflow-hidden mr-3 flex-shrink-0">
+                    <img src="https://images.unsplash.com/photo-1498887960847-2a5e46312788?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=60" alt="维修店铺" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1">
+                    <div class="flex justify-between">
+                        <h4 class="font-semibold">专业房车技术服务</h4>
+                        <span class="text-xs bg-green-100 text-green-600 px-2 py-1 rounded">技术专精</span>
+                    </div>
+                    <div class="flex items-center mt-1 text-sm">
+                        <div class="flex text-yellow-400">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-500 ml-1">4.7分</span>
+                        <span class="mx-2 text-gray-300">|</span>
+                        <span class="text-gray-500">月售 95 单</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-500">
+                            <i class="fas fa-map-marker-alt text-gray-400 mr-1"></i>
+                            <span>距离您 6.8km</span>
+                        </div>
+                        <button class="bg-orange-500 text-white text-sm px-4 py-1 rounded-full">
+                            联系
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-sm">
+                <div class="flex flex-wrap gap-2">
+                    <span class="tag tag-orange">进口配件</span>
+                    <span class="tag tag-orange">深度检测</span>
+                    <span class="tag tag-orange">线路改造</span>
+                    <span class="tag tag-green">免费上门</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部加载更多 -->
+    <div class="text-center p-4 text-gray-500 text-sm">
+        <span>上拉加载更多</span>
+    </div>
+
+    <!-- 维修预约弹窗 (默认隐藏) -->
+    <div id="repairModal" class="fixed inset-0 bg-black bg-opacity-50 z-20 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg w-5/6 max-w-md overflow-hidden">
+            <div class="p-4 border-b flex justify-between items-center">
+                <h3 class="font-semibold text-lg">预约维修/保养</h3>
+                <button id="closeModal" class="text-gray-500">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4">
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">选择维修类型</label>
+                    <select class="select-field">
+                        <option>常规保养</option>
+                        <option>故障维修</option>
+                        <option>零部件更换</option>
+                        <option>电路检修</option>
+                        <option>水电系统维护</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">选择服务日期</label>
+                    <input type="date" class="input-field">
+                </div>
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">问题描述</label>
+                    <textarea class="input-field" rows="3" placeholder="请简单描述您的车辆问题或维修需求..."></textarea>
+                </div>
+                <button class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold">
+                    提交预约
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 绑定"我要维修/保养"按钮事件
+            const repairBtn = document.querySelector('.bg-white.p-4.mt-2 button');
+            const repairModal = document.getElementById('repairModal');
+            const closeModal = document.getElementById('closeModal');
+            
+            repairBtn.addEventListener('click', function() {
+                repairModal.classList.remove('hidden');
+            });
+            
+            closeModal.addEventListener('click', function() {
+                repairModal.classList.add('hidden');
+            });
+            
+            // 点击模态框外部关闭
+            repairModal.addEventListener('click', function(e) {
+                if (e.target === repairModal) {
+                    repairModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
